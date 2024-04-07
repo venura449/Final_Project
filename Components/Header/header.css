@@ -1,0 +1,129 @@
+/* root element settings */
+:root {
+    --primary-color: #3d5cb8;
+    --primary-color-dark: #334c99;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --extra-light: #f1f5f9;
+    --white: #ffffff;
+    --max-width: 1200px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+/*start of the navigation bar link section */
+#nav_site_ico{
+    height: 30px;
+    width:30px;
+    margin-right: 20px;
+
+}
+nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.nav__logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.link a {
+    font-weight: 500;
+    color: var(--text-light);
+    transition: 0.3s;
+}
+
+.link a:hover {
+    color: var(--text-dark);
+}
+a {
+    text-decoration: none;
+}
+/* end of the navigation bar link section */
+
+/*start of contact us button */
+.btn {
+    padding: 0.75rem 2rem;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--primary-color-dark);
+}
+/* End of contact us button section*/
+
+/*login section*/
+#nav_login_ico{
+    margin-top:15px;
+    height:40px;
+    width:40px;
+}
+#nav_login_ico:hover{
+    transform: scale(1.2);
+}
+
+
+/* start of tooltip for login section*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tool_tip_text {
+    visibility: hidden;
+    width: 70px;
+    background-color:var(--primary-color);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 150%;
+}
+
+.tooltip .tool_tip_text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--primary-color) transparent transparent;
+}
+.tooltip:hover .tool_tip_text {
+    visibility: visible;
+}
+/* end of tooltip for login section*/
