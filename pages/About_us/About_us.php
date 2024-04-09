@@ -8,6 +8,12 @@ echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
 
+
+
+
+
+
+
 // Include the HTML content
 require_once("../../Components/Footer/Footer.php");
 

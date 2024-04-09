@@ -88,3 +88,21 @@ body {
     font-size: 1.2rem;
     color: var(--extra-light);
 }
+
+/*responsive*/
+@media (width < 900px) {
+    .footer__container {
+        gap: 2rem;
+    }
+}
+
+@media (width < 600px) {
+    .footer__container {
+        grid-template-columns: 1fr;
+    }
+
+    .footer__bar {
+        flex-direction: column;
+        text-align: center;
+    }
+}
