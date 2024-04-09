@@ -16,6 +16,7 @@
 <footer class="footer">
     <div class="section__container footer__container">
         <div class="footer__col">
+            <!--left-->
             <h3>WIX-Air</h3>
             <p>
                 Where Excellence Takes Flight. With a strong commitment to customer
@@ -27,6 +28,7 @@
                 world, ensuring safe, comfortable, and unforgettable experiences.
             </p>
         </div>
+        <!--Middle Section-->
         <div class="footer__col">
             <h4>INFORMATION</h4>
             <p>Home</p>
@@ -35,6 +37,7 @@
             <p>Reservation</p>
             <p>Destinations</p>
         </div>
+        <!--right side section-->
         <div class="footer__col">
             <h4>CONTACT</h4>
             <p>Support</p>
@@ -42,6 +45,7 @@
             <p>FAQ</p>
         </div>
     </div>
+    <!--Icons Section-->
     <div class="section__container footer__bar">
         <p>Copyright © 2024_MLB_01.02_11 . All rights reserved.</p>
         <div class="socials">
