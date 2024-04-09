@@ -17,7 +17,6 @@
 <body>
 <!--List section-->
 <nav>
-
     <div class="nav__logo">
         <img id="nav_site_ico" src="../../src/airplane.png" alt="login">
         Wix-Air</div>
