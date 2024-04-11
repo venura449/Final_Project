@@ -20,11 +20,13 @@ echo '</style>';
     </head>
     <body>
     <header>
+
         <div class="container">
             <div class="notification">
                 Just One Step Ahead From Your Tour
             </div>
         </div>
+
         <div class="container1">
             <div class="tabs">
                 <input type="radio" id="radio-1" name="tabs">
@@ -39,10 +41,6 @@ echo '</style>';
 
     </header>
     <section class="content">
-
-        <div class="container">
-
-        </div>
         <div class="details shadow">
             <div class="details__item">
                 <div class="item__details">

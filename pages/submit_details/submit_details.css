@@ -1,0 +1,131 @@
+/* nav side map*/
+.tabs {
+    margin-top: 30px;
+    margin-bottom: -20px;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    background-color: var(--white);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 99px;
+    z-index: 1;
+}
+.container1 input[type="radio"] {
+    display: none;
+}
+.container1{
+    max-width: var(--max-width);
+    margin:0 auto;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 250px;
+    font-size: .8rem;
+    color: black;
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+}
+.glider {
+    position: absolute;
+    display: flex;
+    height: 30px;
+    width: 250px;
+    background-color:transparent;
+    z-index: -1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+}
+.container1 input[type="radio"]:checked + label {
+    color: #185ee0;
+}
+
+.container1 input[type="radio"]:checked + label {
+    background-color: #185ee0;
+    color: #fff;
+    margin: 0;
+}
+
+.container1 input[id="radio-1"]:checked ~ .glider {
+    transform: translateX(0);
+}
+
+.container1 input[id="radio-2"]:checked ~ .glider {
+    transform: translateX(100%);
+}
+
+.container1 input[id="radio-3"]:checked ~ .glider {
+    transform: translateX(200%);
+}
+.container {
+    border-radius: 20px;
+    width: var(--max-width);
+    margin: 60px auto 0 auto;
+}
+.notification {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.shadow {
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+.details {
+    max-width: var(--max-width);
+    min-height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.details__item {
+    display: flex;
+}
+#img_grant{
+    height:300px;
+    width:300px;
+}
+.details__user {
+    background: #f6f9fc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dadada;
+}
+
+.item__quantity {
+    position: absolute;
+    right: 50px;
+    top: 30px;
+    font-size: 20px;
+}
+.item__details {
+    padding: 30px;
+}
+.item__title {
+    font-size: 28px;
+    font-weight: 600;
+}
+.item__price {
+    font-size: 22px;
+    color: #bec3cb;
+}
+.item__description ul li{
+    padding:10px 0 10px 0;
+}
+.item__description ul{
+    list-style: none;
+}
