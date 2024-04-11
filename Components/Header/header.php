@@ -30,7 +30,7 @@
 
     </ul>
     <!--Contact Us button-->
-    <button class="btn">Contact Us</button>
+    <button class="btn12">Contact Us</button>
 
     <!--Login icon Section-->
     <div class="tooltip">
