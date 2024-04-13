@@ -74,8 +74,8 @@ body {
 }
 
 .footer__bar p {
-    font-size: 0.9rem;
-    color: var(--extra-light);
+    font-size: 0.9rem!important;
+    color: var(--extra-light)!important;
 }
 
 .socials {

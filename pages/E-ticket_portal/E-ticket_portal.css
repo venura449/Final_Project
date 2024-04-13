@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap");
+:root {
+    --primary-color: #3d5cb8;
+    --primary-color-dark: #334c99;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --extra-light: #f1f5f9;
+    --white: #ffffff;
+    --max-width: 1200px;
+}
+:root {
+
+    /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --first-color: hsl(230, 75%, 56%);
+    --title-color: hsl(230, 75%, 15%);
+    --text-color: hsl(230, 12%, 40%);
+    --body-color: hsl(230, 100%, 98%);
+    --container-color: hsl(230, 100%, 97%);
+    --border-color: hsl(230, 25%, 80%);
+
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --body-font: "Syne", sans-serif;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: .938rem;
+
+    /*========== Font weight ==========*/
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+}
+
+
+
+body{
+    font-family: var(--body-font);
+}
+
+.container {
+    border-radius: 20px;
+    width: var(--max-width);
+    margin: 60px auto 0 auto;
+}
+
+
+/*navigation site map*/
+.tabs {
+    margin-top: 30px;
+    margin-bottom: -20px;
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    background-color: var(--white);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    border-radius: 99px;
+    z-index: 1;
+}
+.container1 input[type="radio"] {
+    display: none;
+}
+.container1{
+    max-width: var(--max-width);
+    margin:0 auto;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 250px;
+    font-size: .8rem;
+    color: black;
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+}
+.glider {
+    position: absolute;
+    display: flex;
+    height: 30px;
+    width: 250px;
+    background-color:transparent;
+    z-index: -1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+}
+.container1 input[type="radio"]:checked + label {
+    color: #185ee0;
+}
+
+.container1 input[type="radio"]:checked + label {
+    background-color: #185ee0;
+    color: #fff;
+    margin: 0;
+}
+
+.container1 input[id="radio-1"]:checked ~ .glider {
+    transform: translateX(0);
+}
+
+.container1 input[id="radio-2"]:checked ~ .glider {
+    transform: translateX(100%);
+}
+
+.container1 input[id="radio-3"]:checked ~ .glider {
+    transform: translateX(200%);
+}
+.wrapper{
+    border:2px solid var(--primary-color);
+    width:var(--max-width);
+    height:680px;
+    margin:40px auto;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+.wrappersection h1{
+
+}
+.wrappersection h1,.wrappersection h4{
+    text-align: center;
+    margin-top:12px;
+
+}
+.totalwrapper{
+    display: flex;
+}
+.srcimg{
+    height:300px;
+    width:350px;
+}
+.textwrapper{
+    padding-left:30px;
+}
+.imagewrapper{
+    margin-left:250px;
+    margin-top:40px;
+    transform: translateY(76px);
+
+}
+.listflight{
+    list-style: none;
+    width:400px;
+}
+.listflight li{
+    padding:4px 0;
+}
+.totalwrapper h2{
+    margin-top:30px;
+    margin-bottom: 30px;
+}
+.listflight li span{
+    font-weight: bold;
+}
+.warsec p{
+    padding: 50px 0  0 80px;
+}
+.thirdWrapper h2, .thirdWrapper p{
+    text-align: center;
+}
+.thirdwrapper2{
+    display: flex;
+
+}
+.mybookings{
+    border-radius: 8px;
+    border: 0;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #246eea;
+    padding: 20px 60px;
+    white-space: nowrap;
+    font-size: 16px;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    margin:30px auto  80px auto;
+}
+
+.container {
+    border-radius: 20px;
+    width: var(--max-width);
+    margin: 60px auto 0 auto;
+}
+.notification {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}

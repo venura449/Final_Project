@@ -70,7 +70,7 @@ img {
     min-height: 300px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -200px;
+    margin-top: 10px;
     background: #fff;
     border-radius: 8px;
     display: flex;
@@ -235,7 +235,7 @@ input[type="text"] {
     letter-spacing: 1px;
     color: #fff;
     background: #246eea;
-    padding: 20px 60px;
+    padding: 10px 30px;
     white-space: nowrap;
     font-size: 16px;
     line-height: 1;
@@ -285,9 +285,10 @@ input[type="text"] {
 .backBtn{
     padding-top:20px;
 }
-
+/*payment button*/
 .payment__type {
     display: flex;
+    margin-left:10px;
     border: 2px solid #d9d9d9;
     border-radius: 8px;
     padding: 20px 40px;
@@ -298,6 +299,7 @@ input[type="text"] {
     color: #d9d9d9;
     transition: all 0.15s ease;
 }
+/*payment button hover animation*/
 .payment__type:hover {
     transform: translateY(-1px);
 }
@@ -305,13 +307,6 @@ input[type="text"] {
     color: var(--text-dark);
     background: #f6fcf7;
     border-color: var(--primary-color);
-}
-.payment__type .icon {
-    font-size: 32px;
-    margin-right: 10px;
-}
-.payment__type + .payment__type {
-    margin-left: 10px;
 }
 
 .content {
@@ -340,6 +335,7 @@ input[type="text"] {
     margin:0 auto;
 }
 
+/*glider*/
 .tab {
     display: flex;
     align-items: center;
@@ -384,4 +380,8 @@ input[type="text"] {
 .container1 input[id="radio-3"]:checked ~ .glider {
     transform: translateX(200%);
 }
-
+.container{
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding:30px;
+    margin-bottom: 30px;
+}

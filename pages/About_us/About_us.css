@@ -38,6 +38,7 @@ body{
     align-items: center;
     max-width: var(--max-width);
     margin :0 auto 15px auto;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 .box1{

@@ -76,11 +76,10 @@ echo '</style>';
                     Payment Method
                 </div>
                 <div class="payment__types">
-                    <div class="payment__type payment__type--cc active">
-                        <i class="icon icon-credit-card"></i>Visa</div>
-                    <div class="payment__type payment__type--paypal">
-                        <i class="icon icon-paypal"></i>Master Card</div>
-
+                    <div class="payment__type">
+                        Visa</div>
+                    <div class="payment__type active">
+                        Master Card</div>
                 </div>
 
                 <div class="payment__info">
@@ -192,7 +191,7 @@ echo '</style>';
 
             </div>
     </section>
-
+    <script src="payment.js"></script>
     </body>
 
 
@@ -205,7 +204,4 @@ echo '<style>';
 require_once("../../Components/Footer/Footer.css");
 echo '</style>';
 ?>
-<script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-</script>
+
