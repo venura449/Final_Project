@@ -108,7 +108,7 @@ a{
 
 body {
     font-family: var(--body-font);
-    background-color: var(--body-color);
+    background-color: var(--white);
     color: var(--text-color);
 }
 

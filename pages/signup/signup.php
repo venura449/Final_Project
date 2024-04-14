@@ -23,6 +23,9 @@
     <body>
     <!--login container Section-->
     <div class="login" id="login">
+        <div>
+            <a href="../Home/index.php"> <img class="login__close" src="../../src/close.png"></a>
+        </div>
         <form action="" class="login__form">
             <h2 class="login__title">Register Your Account</h2>
 
@@ -61,8 +64,8 @@
             </div>
 
             <div>
-                <p class="login__signup">I don't have an Account ?
-                     <a href="#"> Sign Up</a>
+                <p class="login__signup">Already Have An Account
+                     <a href="../../pages/signin/signin.php"> Sign In</a>
                 </p>
                 <input
                     for="declear"

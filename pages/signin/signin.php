@@ -22,6 +22,9 @@
 </head>
 <body>
 <div class="login" id="login">
+    <div>
+       <a href="../Home/index.php"> <img class="login__close" src="../../src/close.png"></a>
+    </div>
     <form action="" class="login__form">
         <h2 class="login__title">Sign In</h2>
 
@@ -49,10 +52,10 @@
 
         <div>
             <p class="login__signup">
-                Already have an Account <a href="#">Sign In</a>
+                I Don't have an Account <a href="../../pages/signup/signup.php">Sign Up</a>
             </p>
 
-            <a href="#" class="login__forgot"> forgot your password ? </a>
+            <a href="../../pages/forgetpass/Add_email_section/add_email.php" class="login__forgot"> forgot your password ? </a>
 
             <button type="submit" class="login__button">Sign In</button>
         </div>

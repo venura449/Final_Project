@@ -89,7 +89,7 @@ body {
     cursor: pointer;
 }
 
-.booking__nav span:nth-child(2) {
+.booking.active {
     color: var(--white);
     background-color: var(--primary-color);
 }

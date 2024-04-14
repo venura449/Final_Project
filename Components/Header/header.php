@@ -23,18 +23,18 @@
 
     <!--Link section -->
     <ul class="nav__links">
-        <li class="link"><a href="#">Home</a></li>
-        <li class="link"><a href="#">Packages</a></li>
-        <li class="link"><a href="#">My Bookings</a></li>
-        <li class="link"><a href="#">About Us</a></li>
+        <li class="link"><a href="../../pages/Home/index.php">Home</a></li>
+        <li class="link"><a href="../../pages/Packages/packages.php">Packages</a></li>
+        <li class="link"><a href="../../pages/my_bookings/mybookings.php">My Bookings</a></li>
+        <li class="link"><a href="../../pages/About_us/About_us.php">About Us</a></li>
 
     </ul>
     <!--Contact Us button-->
-    <button class="btn12">Contact Us</button>
+    <button onclick="window.location.href='../../pages/contact_us/contact_us.php'" class="btn12">Contact Us</button>
 
     <!--Login icon Section-->
     <div class="tooltip">
-        <a href="#"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
+        <a href="../../pages/signin/signin.php"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
         <span class="tool_tip_text">login</span>
     </div>
 

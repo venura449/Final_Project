@@ -20,6 +20,7 @@ echo '</style>';
 </head>
 <body>
 <section class="container">
+    <h1>Check Out Our New Travel Locations</h1>
     <div class="sliderwrapper">
         <div class="slider">
             <img id="1" src="../../src/paris.jpg" alt="paris">
@@ -44,7 +45,7 @@ echo '</style>';
 </section>
 <section class="secondsection">
     <div>
-        <h2>Latest Details</h2>
+        <h2>What is the Package Section ?</h2>
         <p>
             Wix-Air prides itself on providing a diverse range of discounted travel packages tailored to
             suit every traveler's desires. Within this section, you'll find an extensive selection of flights

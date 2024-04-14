@@ -31,9 +31,9 @@ echo '</style>';
 
 <section class="section__container booking__container">
     <div class="booking__nav">
-        <span>Economy Class</span>
-        <span>Business Class</span>
-        <span>First Class</span>
+        <span class="booking">Economy Class</span>
+        <span class="booking">Business Class</span>
+        <span class="booking">First Class</span>
     </div>
     <form>
         <div class="form__group">
@@ -41,26 +41,26 @@ echo '</style>';
             <div class="input__content">
                 <div class="input__group">
                     <input type="text" />
-                    <label>Location</label>
+                    <label>Depart From</label>
                 </div>
-                <p>Where are you goung?</p>
+                <p>What is Your hometown?</p>
             </div>
         </div>
         <div class="form__group">
             <span><i class="ri-user-3-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="number" />
-                    <label>Travellers</label>
+                    <input type="text" />
+                    <label>Arrive To</label>
                 </div>
-                <p>Add guests</p>
+                <p>Where Are you going?</p>
             </div>
         </div>
         <div class="form__group">
             <span><i class="ri-calendar-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="text" />
+                    <input type="date" />
                     <label>Departure</label>
                 </div>
                 <p>Add date</p>
@@ -70,7 +70,7 @@ echo '</style>';
             <span><i class="ri-calendar-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="text" />
+                    <input type="date" />
                     <label>Return</label>
                 </div>
                 <p>Add date</p>
@@ -242,5 +242,6 @@ echo '</style>';
         </form>
     </div>
 </section>
+<script src="Home.js"></script>
 </body>
 </html>
