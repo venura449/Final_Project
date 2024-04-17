@@ -25,7 +25,7 @@ echo '</style>';
         <p>In this seating arrangement:</p>
         <p>
         <ul>
-            <li>Rows are numbered consecutively from 1 to 33.</li>
+            <li>Rows are numbered consecutively from 1 to 2.</li>
             <li>Seats on the left side are identified by the letter 'L' followed by a number.</li>
             <li>Seats on the right side are identified by the letter 'R' followed by a number.</li>
             <li>The numbering starts from the center and expands outward.</li>
@@ -35,99 +35,168 @@ echo '</style>';
             and proceeding inwards from both sides.
         </p>
     </div>
+    <div class="container">
+            <h1>Seat Booking</h1>
+            <div class="seats-container" id="seatsContainer">
+                <!-- Seats will be dynamically generated here -->
+            </div>
+        <div>
+            <button class="submitbtn12">
+                Select
+            </button>
+        </div>
+        </div>
 
     <div class="box1">
+        <h2>Enter Your Sheet Manually</h2>
         <form>
-            <input type="text" class="seatnum" id="seatnum"name="seatnum">
-            <div>
-                <input type="text" class="seatnum" id="seatnum"name="seatnum">
-            </div>
-
+            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
+            <input type="text" class="seatnum" id="seatnum" name="seatnum" placeholder="Enter Customer 01 Seat Number">
+            <br>
+            <label>&nbsp;&nbsp;&nbsp;Customer 02</label>
+            <br>
+            <input type="text" class="seatnum" id="seatnum" name="seatnum" placeholder="Enter Customer 02 Seat Number">
+            <br>
             <button class="submitbtn">Submit</button>
         </form>
     </div>
 
-    <div class="container">
-        <h1>Baggage details</h1>
-        <h3>Click on the selected Package</h3>
-    </div>
+    <div class="container1">
+        <h1>Select Your Luggage Type</h1>
+        <div class="box2">
 
-    <div class="box2">
-        <h1>Cabin Baggage</h1>
-        <div class="container1">
-            <div class="box3">
-                <img src="../../src/bag1.jpg" id="bag1">
-                <p><h4>1 Small Bag</h4></p>
-                <p id="size">40cm*25cm*20cm</p>
-            </div>
-            <form>
-                <label>0 Rs</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
-            </form>
-        </div>
-        <div class="container2">
-            <div class="box4">
-                <div class="b1">
+            <div class="cont1">
+                <div class="box3">
                     <img src="../../src/bag1.jpg" id="bag1">
                     <p><h4>1 Small Bag</h4></p>
                     <p id="size">40cm*25cm*20cm</p>
                 </div>
-                <div class="b2">
-                    <img src="../../src/plus.jpg" id="plus">
-                </div>
-                <div class="b3">
-                    <img src="../../src/bag.jpg" id="bag2">
-                    <p><h4>1 Small Bag + 1 Carry-On bag</h4></p>
-                    <p id="size">10kg,55cm*40cm*20cm</p>
-                </div>
+                <form>
+                    <label>0 Rs</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                </form>
             </div>
-            <form>
-                <label>+4000 Rs</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
-            </form>
+            <div class="container2">
+                <div class="box4">
+                    <div class="b1">
+                        <img src="../../src/bag1.jpg" id="bag1">
+                        <p><h4>1 Small Bag</h4></p>
+                        <p id="size">40cm*25cm*20cm</p>
+                    </div>
+                    <div class="b2">
+                        <img src="../../src/plus.jpg" id="plus">
+                    </div>
+                    <div class="b3">
+                        <img src="../../src/bag.jpg" id="bag2">
+                        <p><h4>1 Small Bag + 1 Carry-On bag</h4></p>
+                        <p id="size">32kg,55cm*40cm*20cm</p>
+                    </div>
+                </div>
+                <form>
+                    <label>+4000 Rs</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                </form>
+            </div>
+        </div>
+        <div class="restrictions">
+            <ul>
+                <li>
+                    <p>
+                        <b>Checked Baggage Weight Limit:</b> Airlines often impose weight limits for checked baggage,
+                        typically ranging from 20 kg (44 lbs) to 32 kg (70 lbs) per bag.
+                        However, these limits can vary depending on the airline and ticket class.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <b>Carry-On Baggage Allowance:</b> Most airlines allow passengers to bring one
+                        carry-on bag and one personal item, such as a purse or laptop bag, into
+                        the cabin. The maximum weight for carry-on luggage is usually around
+                        7 kg (15 lbs), but dimensions and weight restrictions may vary by airline.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <b>Size Restrictions:</b> Airlines also enforce size restrictions for both checked
+                        and carry-on luggage to ensure it fits in overhead bins or under the seat in
+                        front of you. Typical maximum dimensions for carry-on bags are around 40 x 25
+                        x 20 centimeters.
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 
-    <div class="box2">
-        <h1>Checked Bags</h1>
-        <div class="container1">
-            <div class="box3">
-                <img src="../../src/bag1.jpg" id="bag1" alt="smallbag">
-                <p><h4>1 Small Bag</h4></p>
-                <p id="size">40cm*25cm*20cm</p>
-            </div>
-            <form>
-                <label>0 Rs</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
-            </form>
-        </div>
-        <div class="container2">
-            <div class="box4">
-                <div class="b1">
+    <div class="container1">
+        <h1>Additional Luggage Options</h1>
+        <div class="box2">
+
+            <div class="cont1">
+                <div class="box3">
                     <img src="../../src/bag1.jpg" id="bag1">
                     <p><h4>1 Small Bag</h4></p>
                     <p id="size">40cm*25cm*20cm</p>
                 </div>
-                <div class="b2">
-                    <img src="../../src/plus.jpg" id="plus">
-                </div>
-                <div class="b3">
-                    <img src="../../src/bag.jpg" id="bag2">
-                    <p><h4>1 Small Bag + 1 Carry-On bag</h4></p>
-                    <p id="size">10kg,55cm*40cm*20cm</p>
-                </div>
+                <form>
+                    <label>0 Rs</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                </form>
             </div>
-            <form>
-                <label>+4000 Rs</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
-            </form>
+            <div class="container2">
+                <div class="box4">
+                    <div class="b1">
+                        <img src="../../src/bag1.jpg" id="bag1">
+                        <p><h4>1 Small Bag</h4></p>
+                        <p id="size">40cm*25cm*20cm</p>
+                    </div>
+                    <div class="b2">
+                        <img src="../../src/plus.jpg" id="plus">
+                    </div>
+                    <div class="b3">
+                        <img src="../../src/bag.jpg" id="bag2">
+                        <p><h4>1 Small Bag + 1 Carry-On bag</h4></p>
+                        <p id="size">32kg,55cm*40cm*20cm</p>
+                    </div>
+                </div>
+                <form>
+                    <label>+4000 Rs</label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                </form>
+
+
+            </div>
+
+        </div>
+        <div class="restrictions">
+            <ul>
+                <li>
+                    <p>
+                        <b>Excess Baggage Fees: </b>If your luggage exceeds the weight or size limits
+                        specified by the airline, you may incur additional fees. These fees can
+                        vary widely depending on the airline, route, and the extent to which your
+                        luggage exceeds the limits.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <b>Security Regulations:</b> Be aware of security regulations regarding prohibited
+                        items in both checked and carry-on luggage. Certain items, such as sharp objects,
+                        liquids over 100ml, and flammable materials, are restricted or prohibited for air travel.
+                        We strictly check for those in addition luggage section.
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 
+
+
+
+    <script src="Reservation.js"></script>
     </body>
     </html>
 
