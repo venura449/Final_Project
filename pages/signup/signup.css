@@ -313,3 +313,12 @@ img {
         margin-inline: auto;
     }
 }
+#alertmsg{
+    z-index: 1;
+    position: fixed;
+    top:64%;
+    left:37%;
+    color: red;
+    width: 400px;
+    text-align: center;
+}

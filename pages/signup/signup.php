@@ -1,6 +1,14 @@
+
+<!--Error Handler-->
 <?php
-
-
+session_start();
+// Carrying errors using session
+if (isset($_SESSION['signup_error'])) {
+    $Signup_Fail = $_SESSION['signup_error'];
+    unset($_SESSION['signup_error']);
+} else {
+    $Signup_Fail = "";
+}
 ?>
 
     <!DOCTYPE html>
@@ -26,7 +34,7 @@
         <div>
             <a href="../Home/index.php"> <img class="login__close" src="../../src/close.png"></a>
         </div>
-        <form action="" class="login__form">
+        <form action="../signup/handler/handler.php" class="login__form" method="post" onsubmit="return validInput()">
             <h2 class="login__title">Register Your Account</h2>
 
             <div class="login__group">
@@ -36,6 +44,7 @@
                         type="text"
                         placeholder="Write your Username"
                         id="username"
+                        name="username"
                         class="login__input"
                     />
                 </div>
@@ -46,6 +55,7 @@
                         type="email"
                         placeholder="Enter your Email"
                         id="email"
+                        name="email"
                         class="login__input"
                     />
                 </div>
@@ -53,9 +63,11 @@
                 <div>
                     <label for="password" class="login__label">Password</label>
                     <input
+                            style="margin-bottom: 30px;"
                         type="password"
                         placeholder="Enter your password"
                         id="password"
+                        name="password"
                         class="login__input"
                     />
                 </div>
@@ -68,24 +80,84 @@
                      <a href="../../pages/signin/signin.php"> Sign In</a>
                 </p>
                 <input
-                    for="declear"
-                    name="check"
-                    type="checkbox"
-                    class="login__forgot"
-                /> I Agree to <a href="#" >Terms and Conditions</a>
+                        id="checkbox"
+                        name="check"
+                        type="checkbox"
+                        class="login__forgot"
+                />
+                I Agree to <a href="#" >Terms and Conditions</a>
                    <p class="login__forgot"><a href="#">Privacy Policy</a></p>
 
-                <button type="submit" class="login__button">Sign Up</button>
+                <button type="submit" class="login__button" id="submit">Sign Up</button>
             </div>
         </form>
+        <div id="alertmsg">
 
-
+        </div>
     </div>
 
     <!--Background Image-->
     <main class="main">
         <img src="../../src/Capture.JPG" alt="image" class="main__bg"/>
     </main>
+
+    <!--script for handling errors-->
+    <script>
+
+        window.onload = function() {
+            checkcred();
+            rearm();
+
+
+            document.querySelector("form").addEventListener("submit", function(event) {
+
+                if (!validInput()) {
+                    event.preventDefault();
+                } else {
+                    document.querySelector("#submit").innerHTML = "Signing In";
+                }
+            });
+        };
+
+        function checkcred() {
+            console.log("Checking credentials");
+            var signup_Fail = "<?php echo $Signup_Fail ?>";
+            console.log(signup_Fail);
+            var alertmsg = document.getElementById("alertmsg");
+            if (signup_Fail !== '') {
+                alertmsg.style.display = "block";
+                alertmsg.innerHTML = signup_Fail;
+            }
+        }
+
+        function rearm() {
+            document.querySelector("#submit").innerHTML = "Sign Up";
+        }
+
+        function validInput() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
+            var alertmsg = document.getElementById("alertmsg");
+            var checked = document.getElementById("checkbox");
+
+            if (username === '' || password === '' || email === '') {
+                alertmsg.style.display = "block";
+                alertmsg.innerHTML = "Please Fill out All the Fields";
+                return false;
+            } else {
+                if(checked.checked){
+                    alertmsg.style.display = "none";
+                    return true;
+                }
+                else{
+                    alertmsg.style.display = "block";
+                    alertmsg.innerHTML = "You must agree to terms and conditions";
+                }
+            }
+        }
+    </script>
+
     </body>
 
     </html>
