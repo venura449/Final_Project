@@ -39,7 +39,7 @@ session_start();
             </li>
 
             <li>
-                <a href="#">
+                <a href="Customers/Customers.php">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -48,7 +48,7 @@ session_start();
             </li>
 
             <li>
-                <a href="Adminsubdocs/Flights/flight.php">
+                <a href="Flights/flight.php">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -57,7 +57,7 @@ session_start();
             </li>
 
             <li>
-                <a href="#">
+                <a href="feedback/feedback.php">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>
@@ -66,7 +66,7 @@ session_start();
             </li>
 
             <li>
-                <a href="#">
+                <a href="settings/settings.php">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
@@ -75,7 +75,7 @@ session_start();
             </li>
 
             <li>
-                <a href="#">
+                <a href="password/password.php">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
@@ -84,7 +84,7 @@ session_start();
             </li>
 
             <li>
-                <a href="#">
+                <a href="Signout/signout.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -116,12 +116,12 @@ session_start();
         <!-- ======================= Cards ================== -->
         <div class="cardBox">
 
-        <!--this part renders the first card (count of users)-->
+            <!--this part renders the first card (count of users)-->
             <div class="card">
                 <div>
                     <?php
                     // Part to update number of users
-                    $sql = "SELECT * FROM `users` ";
+                    $sql = "SELECT * FROM `registered_user` ";
                     $result = mysqli_query($conn, $sql);
                     $count = mysqli_num_rows($result);
                     echo '<div id="count" class="numbers">' . $count . '</div>';
@@ -138,7 +138,7 @@ session_start();
                 <div>
                     <?php
                     // Part to update number of flights
-                    $sql = "SELECT * FROM `flight` ";
+                    $sql = "SELECT * FROM `flights` ";
                     $result = mysqli_query($conn, $sql);
                     $count = mysqli_num_rows($result);
                     echo '<div id="count" class="numbers">' . $count . '</div>';
@@ -172,10 +172,10 @@ session_start();
                 <div>
                     <?php
                     // Part to update number of Feedback
-                    $sql = "SELECT `cost` FROM `ticket` ;";
+                    $sql = "SELECT `total_payment` FROM `payment` ;";
                     $result = mysqli_query($conn, $sql);
                     while($row = mysqli_fetch_assoc($result)){
-                        $count+=$row['cost'];
+                        $count+=$row['total_payment'];
                     }
                     echo '<div id="count" class="numbers"><span style="font-size: 23px;">Rs</span> ' . $count .'</div>';
                     ?>
@@ -234,13 +234,13 @@ session_start();
                         <button id="fil_btn" onclick="filterTable()">Filter</button>
                     </div>
                 </div>
-<?php
-                $sql = "SELECT * FROM `flight` ORDER BY `departure` DESC ";
+                <?php
+                $sql = "SELECT * FROM `flights` ORDER BY `arrival_time` DESC ";
 
 
                 $result = mysqli_query($conn, $sql);
 
-                    echo '<table id="Flighttable">
+                echo '<table id="Flighttable">
                     <thead>
                     <tr>
                         <th>From</th>
@@ -252,23 +252,24 @@ session_start();
                     </thead>
                     <tbody>';
 
-                    while ($row = mysqli_fetch_assoc($result)) {
+                 while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>
-                        <td>' . $row['source'] . '</td>
-                        <td>' . $row['Destination'] . '</td>
-                        <td>' . $row['airline'] . '</td>
                         <td>' . $row['departure'] . '</td>
-                        <td>' . $row['arrivale'] . '</td>
+                        <td>' . $row['arrival'] . '</td>
+                        <td>' . $row['airline'] . '</td>
+                        <td>' . $row['departure_time'] . '</td>
+                        <td>' . $row['arrival_time'] . '</td>
                         <td><span class="status inProgress">In Progress</span></td>
                     </tr>';
-                    }
 
-                    echo '</tbody></table>';
-?>
-            </div>
+                }
+
+                echo '</tbody></table>';
+                ?>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- =========== Scripts =========  -->

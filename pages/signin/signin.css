@@ -299,16 +299,11 @@ img {
     }
 }
 
-/* For large devices */
-@media screen and (min-width: 1023px) {
-
-    .login__form {
-        padding: 3rem 2rem 3.5rem;
-    }
-}
-
-@media screen and (min-width: 1150px) {
-    .container {
-        margin-inline: auto;
-    }
+#alertmsg{
+    z-index: 1;
+    position: fixed;
+    top:58%;
+    left:0%;
+    width:100%;
+    color: red;
 }

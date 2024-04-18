@@ -386,6 +386,7 @@ body {
     margin:8px;
     padding:8px;
     border-radius: 20px;
+    justify-content: space-between;
 
 }
 #filter_tab_div input{

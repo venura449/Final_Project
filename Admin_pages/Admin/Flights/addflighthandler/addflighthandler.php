@@ -1,6 +1,6 @@
 <?php
 // including database Connection
-require_once("../../../../php/dbconnection.php");
+require_once("../../../../../php/dbconnection.php");
 session_start();
 
 if(isset($_POST['submit'])){
@@ -18,9 +18,10 @@ if(isset($_POST['submit'])){
     $ecosheet = $_POST['ecosheet'];
     $bussheet = $_POST['bussheet'];
 
-    // SQL Injection vulnerability: Directly inserting form data into the SQL query
-    $sql = "INSERT INTO `flight`(`admin_id`, `arrivale`, `departure`, `Destination`, `source`, `airline`, `Seats`, `duration`, `Price`,  `Eco_sheet`, `bus_seats`) 
-            VALUES ('$admin_id','$arrival','$departure','$destination','$source','$airline','$ecosheet+$bussheet','$duration','$price','$ecosheet','$bussheet')";
+
+    $sql = "INSERT INTO flights (arrival, arrival_time, departure, departure_time, duration, airline, business_seats, economy_seats, price, admin_id)
+VALUES ('$destination','$arrival','$source','$departure','$duration','$airline','$bussheet','$ecosheet','$price','$admin_id')";
+
     $result = mysqli_query($conn, $sql);
 
     // Check if insertion was successful

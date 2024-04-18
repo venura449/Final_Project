@@ -1,6 +1,6 @@
 <?php
 // including database Connection
-require_once("../../../../php/dbconnection.php");
+require_once("../../../../../php/dbconnection.php");
 session_start();
 ?>
     <!DOCTYPE html>
@@ -30,7 +30,7 @@ session_start();
                 </li>
 
                 <li>
-                    <a href="../../../Admin.php">
+                    <a href="../../Admin.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>

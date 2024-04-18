@@ -1,6 +1,13 @@
+<!-- error handling part-->
 <?php
+session_start();
 
-
+if (isset($_SESSION['login_error'])) {
+    $loginFail = $_SESSION['login_error'];
+    unset($_SESSION['login_error']);
+} else {
+    $loginFail = "";
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,20 +28,38 @@
 
 </head>
 <body>
+
+<!--this for Error message for displaying carrying error message-->
+<script>
+    function checkcred() {
+        var loginFail = "<?php echo $loginFail ?>";
+        var alertmsg = document.getElementById("alertmsg");
+        if (loginFail !== '') {
+            alertmsg.style.display = 'block';
+            alertmsg.innerHTML = loginFail;
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        checkcred();
+    });
+</script>
+
+
 <div class="login" id="login">
     <div>
        <a href="../Home/index.php"> <img class="login__close" src="../../src/close.png"></a>
     </div>
-    <form action="" class="login__form">
+    <form action="handler/handler.php" class="login__form" method="post" onsubmit="return validInput()">
         <h2 class="login__title">Sign In</h2>
 
         <div class="login__group">
             <div>
                 <label for="email" class="login__label">Email</label>
                 <input
-                    type="email"
+                    type="text"
                     placeholder="Write your email"
                     id="email"
+                    name="email"
                     class="login__input"
                 />
             </div>
@@ -42,9 +67,11 @@
             <div>
                 <label for="password" class="login__label">Password</label>
                 <input
+                    style="margin-bottom: 30px;"
                     type="password"
                     placeholder="Enter your password"
                     id="password"
+                    name="password"
                     class="login__input"
                 />
             </div>
@@ -54,10 +81,14 @@
             <p class="login__signup">
                 I Don't have an Account <a href="../../pages/signup/signup.php">Sign Up</a>
             </p>
+            <div id="alertmsg">
+
+            </div>
 
             <a href="../../pages/forgetpass/Add_email_section/add_email.php" class="login__forgot"> forgot your password ? </a>
 
             <button type="submit" class="login__button">Sign In</button>
+
         </div>
     </form>
 
@@ -67,6 +98,7 @@
 <main class="main">
     <img src="../../src/Capture.JPG" alt="image" class="main__bg"/>
 </main>
+<script src="signin.js"></script>
 </body>
 
 </html>

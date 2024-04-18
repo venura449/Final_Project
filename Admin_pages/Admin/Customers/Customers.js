@@ -68,21 +68,20 @@ function filterTable() {
 }
 
 // delete part
-
 function deleteflight(flightId) {
     // Confirm deletion with the user
     var confirmDelete = confirm("Are you sure you want to delete this flight?");
     if (confirmDelete) {
         // Send AJAX request to delete flight record
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../deleteflights/deleteflights.php", true);
+        xhr.open("POST", "deleteflights/deleteflights.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log(xhr.responseText);
+                // Optionally, you can update the UI or handle the response here
             }
         };
         xhr.send("flight_id=" + flightId);
     }
 }
-Sni
