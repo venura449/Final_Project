@@ -268,7 +268,7 @@ img {
     cursor: pointer;
     transition: box-shadow .4s;
     /*this line need attention of backend*/
-    display:none;
+
 }
 .login__signup {
     margin-top: 0.5rem;
@@ -337,4 +337,18 @@ img {
     .container {
         margin-inline: auto;
     }
+}
+#alertmsg{
+    z-index: 1;
+    position: fixed;
+    top:3%;
+    left:0%;
+    width:100%;
+    color: red;
+}
+#otpDiv{
+    display: none;
+}
+.thirdone{
+    display: none;
 }
