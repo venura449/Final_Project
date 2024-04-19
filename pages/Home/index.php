@@ -7,6 +7,7 @@ require_once("../../Components/Header/header.php");
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
+
 ?>
 
 

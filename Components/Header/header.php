@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +31,21 @@
     </ul>
     <!--Contact Us button-->
     <button onclick="window.location.href='../../pages/contact_us/contact_us.php'" class="btn12">Contact Us</button>
-
     <!--Login icon Section-->
-    <div class="tooltip">
+    <?php
+    if (isset($_SESSION['username'])) {
+    echo '<div class="tooltip">
+        <a href="../../pages/my_bookings/mybookings.php"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
+        <span class="tool_tip_text">' . $_SESSION['username'] . '</span>
+    </div>';
+    } else {
+    echo '<div class="tooltip">
         <a href="../../pages/signin/signin.php"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
         <span class="tool_tip_text">login</span>
-    </div>
+    </div>';
+    }
+    ?>
+
 
 
 

@@ -2,10 +2,24 @@
 // Include the HTML content
 require_once("../../Components/Header/header.php");
 
-// Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
+
+require_once("../../php/dbconnection.php");
+
+/* Prevent accessing without signing in */
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    header("Location: ../signin/signin.php");
+    exit(); // Exit the script after redirection
+}
+
+/* Database */
+$sql = "SELECT * FROM `registered_user` WHERE  `username`='$username'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +34,16 @@ echo '</style>';
 <header>
     <div class="container">
         <div class="notification">
-            Venura Jayasingha &nbsp;||&nbsp; WIX@Venu_123
+            <?php
+            if(isset($row['name']) && !empty($row['name'])) {
+                echo $row['name'];
+            } else {
+                echo "Not provided";
+            }
+            ?>  &nbsp;||&nbsp; <?php echo $row['username']; ?>
         </div>
         <div>
-            <p id="email">venurajayasingha1@gmail.com</p>
+            <p id="email"><?php echo $row['email']; ?></p>
         </div>
     </div>
 
@@ -45,7 +65,7 @@ echo '</style>';
 <section class="content active">
     <div class="container">
         <div>
-            Venura Jayasingha
+            <?php echo $row['name']; ?>
         </div>
         <div>
             <h1>Basic Details</h1>
@@ -54,7 +74,13 @@ echo '</style>';
                 <div class="left">
                     <div>
                         <h5>Name</h5>
-                        <p>J.A Venura Jayasingha</p>
+                        <p><?php
+                            if(isset($row['name']) && !empty($row['name'])) {
+                                echo $row['name'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?></p>
                     </div>
 
                     <div>
