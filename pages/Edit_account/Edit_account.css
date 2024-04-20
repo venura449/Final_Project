@@ -91,7 +91,7 @@ button{
     border-radius: 0.938rem;
     border: none;
     color:var(--white);
-    margin-top: 6.875rem;
+    margin-top: 1rem;
     font-family: var(--body-font);
     font-weight: 300;
 }

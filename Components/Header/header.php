@@ -35,8 +35,8 @@ session_start();
     <?php
     if (isset($_SESSION['username'])) {
     echo '<div class="tooltip">
-        <a href="../../pages/my_bookings/mybookings.php"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
-        <span class="tool_tip_text">' . $_SESSION['username'] . '</span>
+        <a href="../../pages/logout/logout.php"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
+        <span class="tool_tip_text"> Log Out </span>
     </div>';
     } else {
     echo '<div class="tooltip">

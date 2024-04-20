@@ -17,32 +17,31 @@ echo '</style>';
         <link rel="stylesheet" href="Edit_account.css">
     </head>
     <body>
+
         <div id="title">
             <h1>Edit Your Profile</h1>
         </div>
     <div class="wrapper">
         <div class="container">
-            <form action="#" method="POST">
+            <form action="Edithandler.php" method="POST">
                 <div class="box1">
-                    <label for="firstname">First Name</label>
-                    <input type="text" class="firstname" id="firstname" name="firstname">
+                    <label for="name">Name</label>
+                    <input type="text" class="name" id="firstname" name="name">
 
-                    <label for="lastname">Last Name</label>
-                    <input type="text" class="lastname" id="lastname" name="lastname">
+                    <label for="birth">Date Of Birth</label>
+                    <input type="date" class="lastname" id="birth" name="birth">
 
-                    <label for="email">Email</label>
-                    <input type="email" class="email" id="email" name="email">
+                    <label for="gender">Gender</label>
+                    <input type="text" class="email" id="email" name="gender">
 
                     <label for="City">City</label>
                     <input class="City" id="City" name="City"/>
 
-                    <label for="passnum">Passport NUmber</label>
+                    <label for="passnum">Passport Number</label>
                     <input type="text" class="passnum" id="passnum" name="passnum">
 
-                    <label for="gender">Gender</label>
-                    <input type="text" class="gender" id="gender" name="gender">
-
-
+                    <label for="bio">Bio</label>
+                    <input type="text" class="gender" id="bio" name="bio">
                 </div>
                 <div class="box2">
                     <img alt="profile" src="../../src/users.webp">
@@ -50,11 +49,17 @@ echo '</style>';
                     <input type="file" class="image" id="image" name="profile">
                     <p id="img_up">Please provide images in JPG, JPEG, or PNG formats.
                     </p>
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" class="gender" id="mobile" name="mobile">
+
+                    <label for="needs">Special Needs</label>
+                    <input type="text" class="gender" id="gender" name="needs">
                     <button type="submit">Save Changes</button>
                 </div>
             </form>
         </div>
     </div>
+
     </body>
 
 

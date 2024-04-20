@@ -16,7 +16,8 @@ if (isset($_SESSION['username'])) {
     exit(); // Exit the script after redirection
 }
 
-/* Database */
+
+/* Database fetching for Basic details */
 $sql = "SELECT * FROM `registered_user` WHERE  `username`='$username'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -74,40 +75,82 @@ $row = mysqli_fetch_assoc($result);
                 <div class="left">
                     <div>
                         <h5>Name</h5>
-                        <p><?php
+                        <p>
+                            <?php
                             if(isset($row['name']) && !empty($row['name'])) {
                                 echo $row['name'];
                             } else {
                                 echo "Not provided";
                             }
-                            ?></p>
+                            ?>
+                        </p>
                     </div>
 
                     <div>
                         <h5>Date of Birth</h5>
-                        <p>not provided</p>
+                        <p>
+                            <?php
+                            if(isset($row['dob']) && !empty($row['dob'])) {
+                                echo $row['dob'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
 
                     <div>
                         <h5>Accessibility needs</h5>
-                        <p>not provided</p>
+                        <p>
+                            <?php
+                            if(isset($row['special_need']) && !empty($row['special_need'])) {
+                                echo $row['special_need'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
 
                 <div class="right">
                     <div>
                         <h5>Bio</h5>
-                        <p>Keep calm study well</p>
+                        <p>
+                            <?php
+                            if(isset($row['bio']) && !empty($row['bio'])) {
+                                echo $row['bio'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
 
                     <div>
                         <h5>Gender</h5>
-                        <p>male</p>
+                        <p>
+                        <?php
+                        if(isset($row['gender']) && !empty($row['gender'])) {
+                            echo $row['gender'];
+                        } else {
+                            echo "Not provided";
+                        }
+                        ?>
+                        </p>
                     </div>
 
                     <div>
                         <h5>Passport Number</h5>
-                        <p>not provided</p>
+                        <p>
+                            <?php
+                            if(isset($row['passport']) && !empty($row['passport'])) {
+                                echo $row['passport'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
                 <div>
@@ -123,24 +166,56 @@ $row = mysqli_fetch_assoc($result);
                 <div class="left">
                     <div>
                         <h5>Mobile Number</h5>
-                        <p>+94 76 347 2790</p>
+                        <p>
+                            <?php
+                            if(isset($row['mobile_number']) && !empty($row['mobile_number'])) {
+                                echo $row['mobile_number'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
 
                     <div>
                         <h5>City</h5>
-                        <p>not provided</p>
+                        <p>
+                            <?php
+                            if(isset($row['city']) && !empty($row['city'])) {
+                                echo $row['city'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
 
                 <div class="right">
                     <div>
                         <h5>Email</h5>
-                        <p>venurajayasingha1@gmail.com</p>
+                        <p>
+                            <?php
+                            if(isset($row['email']) && !empty($row['email'])) {
+                                echo $row['email'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
 
                     <div>
                         <h5>Postal Code</h5>
-                        <p>not provided</p>
+                        <p>
+                            <?php
+                            if(isset($row['postalcode']) && !empty($row['postalcode'])) {
+                                echo $row['postalcode'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
                 <div>
@@ -200,90 +275,68 @@ $row = mysqli_fetch_assoc($result);
                         <p>Make booking a breeze by saving profiles of family, friends, or teammates who often travel with you.</p>
                     </div>
                     <div>
-                        <button class="add_button"> Add Another Partner</button>
+                        <button class="add_button" onclick="window.location.href='../signin/signin.php'"> Add Another Partner</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<?php
+                $sql = "SELECT ru.*, r.*, f.*
+                        FROM registered_user AS ru
+                        INNER JOIN reservation AS r ON ru.User_ID = r.user_id
+                        INNER JOIN flights AS f ON r.flight_id = f.flight_ID
+                        WHERE ru.username = '$username';
+";
+                        $result = mysqli_query($conn, $sql);
 
+
+
+?>
 
 <section class="content1 active">
 <div class="container">
 <h1>Your Recent Flight Bookings</h1>
 
-    <div class="sinticket">
-        <div>
-            <div>
-                <h4>4.00 pm - 3.45 pm</h4>
-                <p>Colombo(CMB)-Toronto(YYZ)</p>
-                <p>Sri Lankan Air Lines</p>
+
+    <?php
+    // Loop through each flight booking data fetched from the database
+    if (mysqli_num_rows($result) > 0) {
+        while ($rowin = mysqli_fetch_assoc($result)) {
+            ?>
+            <div class="sinticket">
+                <div>
+                    <div>
+                        <h4><?php echo $rowin['departure_time'] . ' - ' . $rowin['arrival_time']; ?></h4>
+                        <p><?php echo $rowin['departure'] . ' - ' . $rowin['arrival']; ?></p>
+                        <p><?php echo $rowin['airline']; ?></p>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <p>Flight Duration : <b><?php echo $rowin['duration']; ?> hours</b></p>
+                        <p> Ticket Class : <b><?php echo $rowin['class']; ?></b></p>
+                        <p> Reference Number : <b><?php echo $rowin['ref_id']; ?></b></p>
+                    </div>
+                </div>
+
+                <div>
+                    <p>Seat No: <?php echo $rowin['seat_no']; ?></p>
+                    <h2>Rs <?php echo number_format($rowin['price'], 2); ?></h2>
+                    <p><?php echo $rowin['passport']; ?></p>
+                </div>
             </div>
-        </div>
+            <?php
+        }
+    } else {
+        // If no tickets are found, display a message
+        echo "<p>No Ticket booked by you.</p>";
+    }
+    ?>
 
-        <div>
-            <div>
-                <p>33h 55min(2 stops)</p>
-                <p>6 hour 15 min in India.6 hour 10 min in Paris</p>
-            </div>
-        </div>
 
-        <div>
-            <p>Seat No : 23R</p>
-            <h2>Rs 3,000,000</h2>
-            <p>Round trip</p>
-
-        </div>
-    </div>
-
-    <div class="sinticket">
-        <div>
-            <div>
-                <h4>8.35 pm - 9.00 am</h4>
-                <p>Colombo(CMB)-Toronto(YYZ)</p>
-                <p>Emirates</p>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <p>22h 25min(2 stops)</p>
-                <p>1 hour 25 min in Male.1 hour 30 min in Dubai</p>
-            </div>
-        </div>
-
-        <div>
-            <p>Seat No : 26R</p>
-            <h2>Rs 3,200,000</h2>
-            <p>Round trip</p>
-
-        </div>
-    </div>
-
-    <div class="sinticket">
-        <div>
-            <div>
-                <h4>4.00 pm - 3.45 pm</h4>
-                <p>Toronto(YYZ)-Colombo(CMB)</p>
-                <p>Sri Lankan Air Lines</p>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <p>33h 55min(2 stops)</p>
-                <p>6 hour 15 min in India.6 hour 10 min in Paris</p>
-            </div>
-        </div>
-
-        <div>
-            <p>Seat No : 43R</p>
-            <h2>Rs 3,000,000</h2>
-            <p>Round trip</p>
-
-        </div>
-    </div>
 </div>
 </section>
 <section class="cont1 active">
@@ -316,35 +369,75 @@ $row = mysqli_fetch_assoc($result);
                    <img class="googicon" src="../../src/google.png" alt="google">
                 </div>
                 <div class="cont2">
-                    <p>J.A Venura jayasingha</p>
-                    <p>venurajayasingha1@gmail.com</p>
+                    <p>
+                        <?php
+                        if(isset($row['name']) && !empty($row['name'])) {
+                            echo $row['name'];
+                        } else {
+                            echo "Not provided";
+                        }
+                        ?>
+                    </p>
+                    <p>
+                        <?php
+                        if(isset($row['email']) && !empty($row['email'])) {
+                            echo $row['email'];
+                        } else {
+                            echo "Not provided";
+                        }
+                        ?>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<?php
+    $sql = "SELECT f.*
+    FROM `feedback` AS f
+    INNER JOIN `registered_user` AS ru ON f.user_id = ru.User_ID
+    WHERE ru.username = '$username'";
+    $result = mysqli_query($conn, $sql);
 
-
+?>
 <section class="content2 active">
     <div class="container ">
         <h1>Your Reviews</h1>
         <div class="pays">
             <h4 class="titlesec">Admin Feedback Requests</h4>
             <div class="admin">
-                <p>What happens When i missed My flight</p>
-                <p>What are the ways to change the flight</p>
+                <?php
+                while ($rowfe = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <p><?php echo $rowfe['question']; ?></p>
+                    <?php
+                }
+                ?>
             </div>
+
+            <?php
+            $sql = "SELECT i.*
+                    FROM `inquire` AS i
+                    INNER JOIN `registered_user` AS ru ON i.user_id = ru.User_ID
+                    WHERE ru.username = '$username'";
+            $result = mysqli_query($conn, $sql);
+
+            ?>
             <h4>FAQ Questions</h4>
             <div class="FA">
-                <p>What happens When i missed My flight</p>
-                <p>What are the ways to change the flight</p>
+                <?php
+                while ($rowfa = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <p><?php echo $rowfa['question']; ?></p>
+                    <?php
+                }
+                ?>
             </div>
             <h5>Thank You For Your Suggestions We Are Looking Forward For Your Next Journey With Us</h5>
             </div>
 
         </div>
 </section>
-
 <script src="mybookings.js"></script>
 </body>
 
