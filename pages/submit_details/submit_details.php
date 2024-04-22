@@ -1,12 +1,27 @@
 <?php
 /*header*/
-require_once ("../../Components/Header/header.php");
+require_once("../../Components/Header/header.php");
+require_once("../../php/dbconnection.php");
 
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
 
+
+// Fetching flight id using get method
+if (isset($_GET['flightid'])) {
+    $selected_flight_id = $_GET['flightid'];
+}
+else{
+    echo "error";
+}
+$sql = "SELECT * FROM `flights` WHERE `flight_ID`= '$selected_flight_id'";
+$result = mysqli_query($conn, $sql);
+$data_row = mysqli_fetch_assoc($result);
+
+$_SESSION['f_id'] = $selected_flight_id;
+$_SESSION['price']=$data_row['price'];
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +36,7 @@ echo '</style>';
     <link rel="stylesheet" href="submit_details.css">
 
 </head>
+
 <body>
 <section>
 
@@ -37,7 +53,8 @@ echo '</style>';
     </div>
     <div class="container">
         <div class="notification">
-            Sri-Lanka to Canada - UFL3467- Sri Lanka Airlines
+            <?php echo $data_row['departure'] ?> to  <?php echo $data_row['arrival'] ?> -
+            <?php echo $data_row['flight_ID'] ?>-  <?php echo $data_row['airline'] ?>
         </div>
     </div>
 </section>
@@ -57,14 +74,14 @@ echo '</style>';
                 </div>
                 <div class="item__description">
                     <ul style="none">
-                        <li><b>Departing From :</b> Sri Lanka</li>
-                        <li><b>Arrive To : </b>Canada</li>
-                        <li><b>Departing Time : </b>12-06-2024 10:23 PM</li>
-                        <li><b>Arrival Time : </b>13-06-2024 08:24 AM</li>
-                        <li><b>Total Flight Duration </b> 6 Hours</li>
-                        <li><b>Total Seats : </b>50</li>
-                        <li><b>Total Economy Seats : </b>30</li>
-                        <li><b>Total Business Seats : </b>20</li>
+                        <li><b>Departing From :</b>  <?php echo $data_row['departure'] ?></li>
+                        <li><b>Arrive To : </b> <?php echo $data_row['arrival'] ?></li>
+                        <li><b>Departing Time : </b> <?php echo $data_row['departure_time'] ?></li>
+                        <li><b>Arrival Time : </b> <?php echo $data_row['arrival_time'] ?></li>
+                        <li><b>Total Flight Duration </b>  <?php echo $data_row['duration'] ?>&nbsp;Hours</li>
+                        <li><b>Total Seats : </b> <?php echo $data_row['economy_seats']+$data_row['business_seats'] ?></li>
+                        <li><b>Total Economy Seats : </b> <?php echo $data_row['economy_seats'] ?></li>
+                        <li><b>Total Business Seats : </b> <?php echo $data_row['business_seats'] ?></li>
                     </ul>
                 </div>
             </div>
@@ -72,135 +89,50 @@ echo '</style>';
 </section>
 
 <section class="section_2">
-        <div class="details shadow1">
-            <div class="details__item">
-                <div class="item__details1">
-                    <div class="item__title">
-                        Passenger Count
-                    </div>
-                    <form class="item__description1">
-                        <label> Adults
-                            <input
-                                    type="text"
-                                    class="num"
-                                    name="adults"
-                                    pattern="[0-2]{1}"
-                            />
-                        </label>
-                        <label> Children
-                            <input
-                                    type="text"
-                                    class="num"
-                                    name="children"
-                                    pattern="[0-2]{1}"
-                            />
-                        </label>
-                        <label> Pets
-                            <input type="text" class="num" name="pets"/>
-                        </label>
-                        <button type="submit" class="second_submit">Submit</button>
-                    </form>
-                    <div class="warning">
-                        * Maximum Number of tickets are in single attempt is Currently limited to 2
-                    </div>
+    <div class="details shadow1">
+        <div class="details__item">
+            <div class="item__details1">
+                <div class="item__title">
+                    Seat Selection
                 </div>
+                <h5>Select Your Seat And Luggage by clicking below </h5>
+                <label><a href="../Reservation_page/Reservation.php">Seat Selection</a></label>
+                <div class="warning">
+                    * Maximum Number of seats are in single attempt is Currently limited to 1
+                </div>
+            </div>
 </section>
 
 <section>
     <div class="details2 shadow">
         <div class="details__item">
-            <form class="item__details1" method="post" action="#">
+            <form class="item__details1" method="post" action="../payment_portal/payment.php">
                 <div class="item__title">
                     Passenger Details
                 </div>
                 <div>
-                    <h2 class="headtitle">Adult 01</h2>
+                    <h5 class="headtitle">This Information Will be printed on Your ticket be careful when entering data</h5>
                 </div>
                 <div class="item__description2">
                     <label> Name
-                        <input type="text" class="num" name="adults"/>
+                        <input type="text"  class="num" name="pas_name" />
                     </label>
                     <label> Age
-                        <input type="text" class="num" name="children"/>
+                        <input type="text" class="num" name="pas_age" />
                     </label>
                     <label> Address
-                        <input type="text" class="num" name="pets"/>
+                        <input type="text" class="num" name="pas_add" />
                     </label>
                     <label> Contact Number
-                        <input type="text" class="num" name="pets"/>
+                        <input type="text" class="num" name="pas_con" />
                     </label>
                     <label> Passport Number
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                </div>
-                <div>
-                    <h2 class="headtitle">Adult 02</h2>
-                </div>
-                <div class="item__description2">
-                    <label> Name
-                        <input type="text" class="num" name="adults"/>
-                    </label>
-                    <label> Age
-                        <input type="text" class="num" name="children"/>
-                    </label>
-                    <label> Address
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                    <label> Contact Number
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                    <label> Passport Number
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                </div>
-
-                <div>
-                    <h2 class="headtitle">Child 01</h2>
-                </div>
-                <div class="item__description2">
-                    <label> Name
-                        <input type="text" class="num" name="adults"/>
-                    </label>
-                    <label> Age
-                        <input type="text" class="num" name="children"/>
-                    </label>
-                    <label> Address
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                    <label> Contact Number
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                    <label> Passport Number
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                </div>
-
-                <div>
-                    <h2 class="headtitle">Child 02</h2>
-                </div>
-                <div class="item__description2">
-                    <label> Name
-                        <input type="text" class="num" name="adults"/>
-                    </label>
-                    <label> Age
-                        <input type="text" class="num" name="children"/>
-                    </label>
-                    <label> Address
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                    <label> Contact Number
-                        <input type="text" class="num" name="pets"/>
-                    </label>
-                    <label> Passport Number
-                        <input type="text" class="num" name="pets"/>
+                        <input type="text" class="num" name="pas_num" />
                     </label>
 
-                    <button
-                            type="submit"
-                            class="second_submit2">
-                            Submit
-                    </button>
+
                 </div>
+                <button type="submit" class="second_submit">Submit</button>
             </form>
 
         </div>
@@ -213,8 +145,8 @@ echo '</style>';
 </html>
 
 <?php
-/*header*/
-require_once ("../../Components/Footer/Footer.php");
+/*footer*/
+require_once("../../Components/Footer/Footer.php");
 
 // Include the CSS file
 echo '<style>';

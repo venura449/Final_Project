@@ -1,5 +1,8 @@
+
 <?php
 
+//header file
+require_once ("../../php/dbconnection.php");
 // Include the HTML content
 require_once("../../Components/Header/header.php");
 
@@ -7,9 +10,21 @@ require_once("../../Components/Header/header.php");
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
+
+// Fetch booked seats from the database
+$flight_id = $_SESSION['f_id'];
+$sql = "SELECT * FROM `seats` WHERE flight_id = '$flight_id'";
+$result = mysqli_query($conn, $sql);
+
+//this array use to highlight the booked seats
+// Create an array to store booked seat numbers
+$bookedSeats = array();
+while ($row = mysqli_fetch_assoc($result)) {
+    $bookedSeats[] = $row['seat_number'];
+}
+
+
 ?>
-
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -25,38 +40,45 @@ echo '</style>';
         <p>In this seating arrangement:</p>
         <p>
         <ul>
-            <li>Rows are numbered consecutively from 1 to 2.</li>
+            <li>Rows are numbered consecutively from 1 to 22.</li>
             <li>Seats on the left side are identified by the letter 'L' followed by a number.</li>
             <li>Seats on the right side are identified by the letter 'R' followed by a number.</li>
-            <li>The numbering starts from the center and expands outward.</li>
+            <li>The numbering starts from the corner and expands inward.</li>
         </ul>
         </p>
-        <p>For instance, in row 1, the leftmost seat would be labeled "L1", the rightmost seat "R1",
+        <p>For instance, in row 1, the leftmost seat would be labeled "L1", the rightmost seat "R67",
             and proceeding inwards from both sides.
         </p>
     </div>
     <div class="container">
+
             <h1>Seat Booking</h1>
+            <p>*Seats Highlighted in yellow color are already booked</p>
             <div class="seats-container" id="seatsContainer">
                 <!-- Seats will be dynamically generated here -->
             </div>
         <div>
-            <button class="submitbtn12">
-                Select
-            </button>
         </div>
         </div>
 
     <div class="box1">
-        <h2>Enter Your Sheet Manually</h2>
-        <form>
+
+        <form action="reservation_data_patch.php" method="post">
+            <h2>Enter Your Sheet Manually</h2>
             <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
             <input type="text" class="seatnum" id="seatnum" name="seatnum" placeholder="Enter Customer 01 Seat Number">
             <br>
-            <label>&nbsp;&nbsp;&nbsp;Customer 02</label>
+            <h2>Enter Your luggage Fees </h2>
+            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
+            <input required type="text" class="seatnum" id="lugnum" name="lugnum" placeholder="Enter Customer 01 luggage">
             <br>
-            <input type="text" class="seatnum" id="seatnum" name="seatnum" placeholder="Enter Customer 02 Seat Number">
+            <h2>Enter Your  Additional luggage Fees</h2>
+            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
+            <input  required  type="text" class="seatnum" id="lugnumadd" name="lugnumadd" placeholder="Enter Customer 01 Additional luggage">
             <br>
+            <p id="warn">Luggage Fees Are Automatically Calculated When You Clicked The Relevant Package.If You Have Different
+                Luggage You Can <a href="../contact_us/contact_us.php">Contact Us</a></p>
+
             <button class="submitbtn">Submit</button>
         </form>
     </div>
@@ -71,11 +93,11 @@ echo '</style>';
                     <p><h4>1 Small Bag</h4></p>
                     <p id="size">40cm*25cm*20cm</p>
                 </div>
-                <form>
+                <div>
                     <label>0 Rs</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
-                </form>
+                    <input type="radio" id="yes_or_no" class="group1" name="yes_or_no" value="0">
+                </div>
             </div>
             <div class="container2">
                 <div class="box4">
@@ -94,9 +116,9 @@ echo '</style>';
                     </div>
                 </div>
                 <form>
-                    <label>+4000 Rs</label>
+                    <label>Rs +8000 </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                    <input type="radio" id="yes_or_no" class="group1" name="add_4000" value="8000">
                 </form>
             </div>
         </div>
@@ -140,9 +162,9 @@ echo '</style>';
                     <p id="size">40cm*25cm*20cm</p>
                 </div>
                 <form>
-                    <label>0 Rs</label>
+                    <label>Rs +2000 </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                    <input type="radio" id="yes_or_no" class="group2" name="yes_or_no" value="2000">
                 </form>
             </div>
             <div class="container2">
@@ -162,9 +184,9 @@ echo '</style>';
                     </div>
                 </div>
                 <form>
-                    <label>+4000 Rs</label>
+                    <label> Rs+ 16000 </label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="yes_or_no" name="yes_or_no" value="yes_or_no">
+                    <input type="radio" id="yes_or_no" class="group2" name="yes_or_no" value="16000">
                 </form>
 
 
@@ -195,7 +217,7 @@ echo '</style>';
 
 
 
-
+    <input type="hidden" id="bookedSeats" value="<?php echo implode(',', $bookedSeats); ?>">
     <script src="Reservation.js"></script>
     </body>
     </html>

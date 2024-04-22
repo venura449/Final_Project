@@ -1,199 +1,210 @@
 <?php
-
-// Include the HTML content
+// Include header and database connection files
 require_once("../../Components/Header/header.php");
+require_once("../../php/dbconnection.php");
 
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
+
+// Check if the session variables for user information are set and not empty
+
+    // Store session variables in local variables
+    $name = $_POST['pas_name'];
+    $age = $_POST['pas_age'];
+    $address = $_POST['pas_add'];
+    $contact_num = $_POST['pas_con'];
+    $passport_num = $_POST['pas_num'];
+
+    $currentDate = date("Y-m-d");
+
+    //session retrieving
+    $flight_id = $_SESSION['f_id'];
+    $seat_num = $_SESSION['seatnum'];
+    $lug_num = $_SESSION['lugnum'] =
+    $lug_num_add = $_SESSION['lugnumadd'];
+
+
+    //session assigning
+    $_SESSION['name'] = $name;
+    $_SESSION['age'] = $age;
+    $_SESSION['address'] = $address;
+    $_SESSION['contact']=$contact_num;
+    $_SESSION['passport']=$passport_num;
+
+
+    $sql = "SELECT * FROM `flights` WHERE `flight_ID`= '$flight_id'";
+    $result = mysqli_query($conn, $sql);
+    $data_row = mysqli_fetch_assoc($result);
+
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en"'>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="payment.css">
-        <title>Payment</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="payment.css">
+    <title>Payment</title>
+</head>
+<body>
+<header>
+    <!-- Header content goes here -->
+    <div class="container">
+        <div class="notification">
+            Just One Step Ahead From Your Tour
+        </div>
+    </div>
 
-    </head>
-    <body>
-    <header>
+    <div class="container1">
+        <div class="tabs">
+            <input type="radio" id="radio-1" name="tabs">
+            <label class="tab" for="radio-1">Submit Details</label>
+            <input type="radio" id="radio-2" name="tabs" checked="">
+            <label class="tab" for="radio-2">Payment Portal</label>
+            <input type="radio" id="radio-3" name="tabs">
+            <label class="tab" for="radio-3">E-Ticket Portal </label>
+            <span class="glider"></span>
+        </div>
+    </div>
 
-        <div class="container">
-            <div class="notification">
-                Just One Step Ahead From Your Tour
+</header>
+
+<section class="content">
+    <!-- Payment content goes here -->
+    <div class="details shadow">
+        <div class="details__item">
+            <div class="item__details">
+                <div class="item__title">
+                    <?php echo $data_row['departure'] ?> to
+                    <?php echo $data_row['arrival'] ?> -
+                    <?php echo $data_row['flight_ID']?>
+                </div>
+                <div class="item__price">
+                    Rs <?php echo $data_row['price'] ?> /=
+                </div>
+                <div class="item__quantity">
+                    <img id="img_grant" src="../../src/grant.png" alt="access_seal">
+                </div>
+                <div class="item__description">
+                    <ul style="none">
+                        <li><b>Departing From :</b><?php echo $data_row['departure'] ?></li>
+                        <li><b>Arrive To : </b><?php echo $data_row['arrival'] ?></li>
+                        <li><b>Departing Time : </b><?php echo $data_row['departure_time'] ?></li>
+                        <li><b>Arrival Time : </b><?php echo $data_row['arrival_time'] ?></li>
+                        <li><b>Air-Line Name : </b><?php echo $data_row['airline'] ?></li>
+                    </ul>
+
+                </div>
+
             </div>
         </div>
 
-        <div class="container1">
-            <div class="tabs">
-                <input type="radio" id="radio-1" name="tabs">
-                <label class="tab" for="radio-1">Submit Details</label>
-                <input type="radio" id="radio-2" name="tabs" checked="">
-                <label class="tab" for="radio-2">Payment Portal</label>
-                <input type="radio" id="radio-3" name="tabs">
-                <label class="tab" for="radio-3">E-Ticket Portal </label>
-                <span class="glider"></span>
+    </div>
+    <div class="discount"></div>
+
+    <div class="container">
+        <div class="payment">
+            <div class="payment__title">
+                Payment Method
             </div>
-        </div>
-
-    </header>
-    <section class="content">
-        <div class="details shadow">
-            <div class="details__item">
-                <div class="item__details">
-                    <div class="item__title">
-                        Sri-Lanka to Canada - UFL3467
-                    </div>
-                    <div class="item__price">
-                        Rs 1,110,000 /=
-                    </div>
-                    <div class="item__quantity">
-                        <img id="img_grant" src="../../src/grant.png" alt="access_seal">
-                    </div>
-                    <div class="item__description">
-                        <ul style="none">
-                            <li><b>Departing From :</b> Sri Lanka</li>
-                            <li><b>Arrive To : </b>Canada</li>
-                            <li><b>Departing Time : </b>12-06-2024 10:23 PM</li>
-                            <li><b>Arrival Time : </b>13-06-2024 08:24 AM</li>
-                            <li><b>Air-Line Name : </b>Sri Lankan Air Lines</li>
-                        </ul>
-
-                    </div>
-
-                </div>
+            <div class="payment__types">
+                <div class="payment__type">
+                    Visa</div>
+                <div class="payment__type active">
+                    Master Card</div>
             </div>
 
-        </div>
-        <div class="discount"></div>
-
-        <div class="container">
-            <div class="payment">
-                <div class="payment__title">
-                    Payment Method
-                </div>
-                <div class="payment__types">
-                    <div class="payment__type">
-                        Visa</div>
-                    <div class="payment__type active">
-                        Master Card</div>
-                </div>
-
-                <div class="payment__info">
-                    <div class="payment__cc">
-                        <div class="payment__title">
-                            <i class="icon icon-user"></i>Personal Information
-                        </div>
-                        <form>
-                            <div class="form__cc">
-                                <div class="row">
-                                    <div class="field">
-                                        <div class="title">Credit Card Number
-                                        </div>
-                                        <input type="text" class="input txt text-validated" placeholder="4542 9931 9292 2293" />
-                                    </div>
+            <div class="payment__info">
+                <div class="payment__cc">
+                    <div class="payment__title">
+                        <i class="icon icon-user"></i>Personal Information
+                    </div>
+                    <form action="validation_and_fetching.php" method="post">
+                        <div class="form__cc">
+                            <div class="row">
+                                <div class="field">
+                                    <div class="title">Credit Card Number</div>
+                                    <input type="text" class="input txt text-validated" name="card_num" placeholder="4542 9931 9292 2293" />
                                 </div>
-                                <div class="row">
-                                    <div class="field small">
-                                        <div class="title">Expiry Date
-                                        </div>
-                                        <select class="input ddl">
-                                            <option selected>01</option>
-                                            <option>02</option>
-                                            <option>03</option>
-                                            <option>04</option>
-                                            <option>05</option>
-                                            <option>06</option>
-                                            <option>07</option>
-                                            <option>08</option>
-                                            <option>09</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                        </select>
-                                        <select class="input ddl">
-                                            <option>01</option>
-                                            <option>02</option>
-                                            <option>03</option>
-                                            <option>04</option>
-                                            <option>05</option>
-                                            <option>06</option>
-                                            <option>07</option>
-                                            <option>08</option>
-                                            <option>09</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                            <option>15</option>
-                                            <option selected>16</option>
-                                            <option>17</option>
-                                            <option>18</option>
-                                            <option>19</option>
-                                            <option>20</option>
-                                            <option>21</option>
-                                            <option>22</option>
-                                            <option>23</option>
-                                            <option>24</option>
-                                            <option>25</option>
-                                            <option>26</option>
-                                            <option>27</option>
-                                            <option>28</option>
-                                            <option>29</option>
-                                            <option>30</option>
-                                            <option>31</option>
-                                        </select>
-                                    </div>
-                                    <div class="field small">
-                                        <div class="title">CVV Code
-                                            <span class="numberCircle">?</span>
-                                        </div>
-                                        <input type="text" class="input txt" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field">
-                                        <div class="title">Name on Card
-                                        </div>
-                                        <input type="text" class="input txt" />
-                                    </div>
-                                </div>
-
                             </div>
-                        </form>
-                    </div>
-                    <div class="payment__shipping">
-                        <div class="payment__title">
-                            <i class="icon icon-plane"></i> Ticket Holder Information
-                        </div>
-                        <div class="details__user">
-                            <div class="user__name">John Doe
-                                <br> 13/03/1980</div>
-                            <div class="user__address">Shipping Address: 22 Street, Address
-                                <br>Country</div>
-                        </div>
+                            <div class="row">
+                                <div class="field small">
+                                    <div class="title">Expiry Date</div>
+                                    <select class="input ddl" name="expiry_month">
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
 
+                                    <select class="input ddl" name="expiry_year">
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
+                                    </select>
+
+                                </div>
+                                <div class="field small">
+                                    <div class="title">CVV Code <span class="numberCircle">?</span></div>
+                                    <input type="text" class="input txt" name="cvv_code" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="field">
+                                    <div class="title">Name on Card</div>
+                                    <input type="text" class="input txt" name="name_on_card" />
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="payment__shipping">
+                    <div class="payment__title">
+                        <i class="icon icon-plane"></i> Ticket Holder Information
                     </div>
+                    <div class="details__user">
+                        <div class="user__name"><?php echo $name?>
+                            <br><?php echo $currentDate?></div>
+                        <div class="user__address">Ticket Vending Address:<br> <?php echo $address ?>
+                            </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="actions">
+    </div>
+    <div class="container">
+        <div class="actions">
 
-                <a href="#" class="btn action__submit">Process the Payment
-                    <i class="icon icon-arrow-right-circle"></i>
-                </a>
-                <a href="#" class="backBtn">Go Back to Submit details page</a>
+            <a href="#" class="btn action__submit">Process the Payment
+                <i class="icon icon-arrow-right-circle"></i>
+            </a>
+            <a href="#" class="backBtn">Go Back to Submit details page</a>
 
-            </div>
-    </section>
-    <script src="payment.js"></script>
-    </body>
+        </div>
+</section>
 
+<script src="payment.js"></script>
+
+</body>
+</html>
 
 <?php
 // Include the HTML content
@@ -204,4 +215,3 @@ echo '<style>';
 require_once("../../Components/Footer/Footer.css");
 echo '</style>';
 ?>
-

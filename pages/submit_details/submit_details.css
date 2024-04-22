@@ -172,21 +172,7 @@
     margin-top:80px;
 }
 .second_submit{
-    border-radius: 8px;
-    border: 0;
-    letter-spacing: 1px;
-    color: #fff;
-    background: #246eea;
-    padding: 20px 60px;
-    white-space: nowrap;
-    font-size: 16px;
-    line-height: 1;
-    text-transform: uppercase;
-    transition: all 0.15s ease;
-    text-decoration: none;
 
-}
-.second_submit2{
     border-radius: 8px;
     border: 0;
     letter-spacing: 1px;
@@ -202,9 +188,7 @@
     height:60px;
     width:200px;
     margin:20px 0 ;
-}
-.second_submit2:hover{
-    transform:scale(1.1) ;
+
 }
 .second_submit:hover{
     transform: scale(1.1);

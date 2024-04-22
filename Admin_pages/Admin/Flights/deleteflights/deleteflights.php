@@ -1,6 +1,6 @@
 <?php
 //request the data base connection
-require_once("../../../../../php/dbconnection.php");
+require_once("../../../../php/dbconnection.php");
 session_start();
 
 //getting the request data using POST method

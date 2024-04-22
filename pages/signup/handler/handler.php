@@ -42,7 +42,7 @@ if ($conn->connect_error) {
                 exit;
             } else {
 
-                // gives error message when faild to write data to database
+                // gives error message when failed to write data to database
                 $_SESSION['signup_error'] = "Signup failed.Unknown Error Occured";
                 header("Location: ../signup.php");
                 exit();

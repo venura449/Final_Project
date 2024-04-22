@@ -1,5 +1,4 @@
 <?php
-
 // Include the HTML content
 require_once("../../Components/Header/header.php");
 
@@ -8,8 +7,10 @@ echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
 
-?>
+require_once ("../../php/dbconnection.php");
 
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +18,8 @@ echo '</style>';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
-        rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+            rel="stylesheet"
     />
     <link rel="stylesheet" href="Home.css" />
     <title>WIX-Air | Home</title>
@@ -36,12 +37,12 @@ echo '</style>';
         <span class="booking">Business Class</span>
         <span class="booking">First Class</span>
     </div>
-    <form>
+    <form method="post" >
         <div class="form__group">
             <span><i class="ri-map-pin-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="text" />
+                    <input name="source" type="text" />
                     <label>Depart From</label>
                 </div>
                 <p>What is Your hometown?</p>
@@ -51,7 +52,7 @@ echo '</style>';
             <span><i class="ri-user-3-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="text" />
+                    <input name="destination" type="text" />
                     <label>Arrive To</label>
                 </div>
                 <p>Where Are you going?</p>
@@ -61,7 +62,7 @@ echo '</style>';
             <span><i class="ri-calendar-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="date" />
+                    <input name="date1" type="date" />
                     <label>Departure</label>
                 </div>
                 <p>Add date</p>
@@ -71,15 +72,87 @@ echo '</style>';
             <span><i class="ri-calendar-line"></i></span>
             <div class="input__content">
                 <div class="input__group">
-                    <input type="date" />
-                    <label>Return</label>
+                    <input name="date2" type="date" />
+                    <label >Return</label>
                 </div>
                 <p>Add date</p>
             </div>
         </div>
-        <button class="btn"><i class="ri-search-line"></i></button>
+        <input hidden="hidden" name="trip_class" id="trip_class"/>
+        <button class="btn" type="submit" name="submit"><i class="ri-search-line"></i></button>
     </form>
+    <?php
+
+    // Check if the form is submitted
+    if (isset($_POST['submit'])) {
+        // Retrieve form data
+        $source = $_POST['source'];
+        $destination = $_POST['destination'];
+        $date1 = $_POST['date1'];
+        $date2 = $_POST['date2'];
+
+        $_SESSION['trip_class'] = $_POST['trip_class'];
+
+        // Prepare basic SQL statement
+        $sql = "SELECT * FROM flights WHERE `departure`='$source' AND `arrival`='$destination'";
+
+        // Add conditions based on provided dates
+        if (!empty($date1)) {
+            $sql .= " AND DATE(departure_time) = '$date1'";
+        }
+        if (!empty($date2)) {
+            // For one-way trips, only consider the departure date
+            $sql .= " AND DATE(departure_time) BETWEEN '$date1' AND '$date1'";
+        }
+
+        // Execute query
+        $result = mysqli_query($conn, $sql);
+
+        // Check for errors
+        if (!$result) {
+            echo "Error executing query: " . mysqli_error($conn);
+        } else {
+            // Check if there are any results
+            if (mysqli_num_rows($result) > 0) {
+                // Display flight search results in a table
+                echo '<table border="1">
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Air-Line</th>
+                        <th>Departure Time</th>
+                        <th>Arrival Time</th>
+                        <th>Booking State</th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<tr>
+                    <td>'.$row['departure'].'</td>
+                    <td>'.$row['arrival'].'</td>
+                    <td>'.$row['airline'].'</td>
+                    <td>'.$row['departure_time'].'</td>
+                    <td>'.$row['arrival_time'].'</td>
+                    <td><a id="book" href="../submit_details/submit_details.php?flightid='.$row['flight_ID'].'">Book now</a></td>
+                </tr>';
+                }
+
+                echo '</tbody></table>';
+            } else {
+                echo "No flights found for the selected criteria.";
+            }
+        }
+
+        // Close connection
+        mysqli_close($conn);
+    }
+    ?>
 </section>
+
+<!-- The rest of your HTML code follows... -->
+
 
 <section class="section__container plan__container">
     <p class="subheader">TRAVEL SUPPORT</p>

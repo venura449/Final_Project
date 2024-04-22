@@ -230,6 +230,7 @@ input[type="text"] {
 }
 
 .btn {
+    margin-top:40px;
     border-radius: 8px;
     border: 0;
     letter-spacing: 1px;

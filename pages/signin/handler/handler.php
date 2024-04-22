@@ -23,6 +23,7 @@ if ($conn->connect_error) {
             if ($password == $row['password']) {
                 // Password is correct, set session and redirect
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['user_id'] = $row['User_ID'];
                 header("Location: ../../Home/index.php");
                 exit();
             } else {
