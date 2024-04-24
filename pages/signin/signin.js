@@ -13,14 +13,12 @@ function validInput() {
     }
 }
 
-/*
+
 document.getElementById('login-btn').addEventListener('click', function(event) {
     var button = document.getElementById('login-btn');
     var loginText = document.getElementById('login-text');
 
     loginText.textContent = 'Signing in';
-    loginText.style.marginLeft = '-10px';
-    button.classList.add('loading');
 
     setTimeout(function() {
         loginText.textContent = 'Sign In';
@@ -34,4 +32,3 @@ document.getElementById('login-btn').addEventListener('click', function(event) {
 
     event.preventDefault(); // Prevent default form submission behavior
 });
-*/

@@ -174,9 +174,14 @@ body{
     font-size: 16px;
     line-height: 1;
     text-transform: uppercase;
-    transition: all 0.15s ease;
+    transition: all 0.5s ease;
     text-decoration: none;
     margin:30px auto  80px auto;
+
+}
+.mybookings:hover{
+    transform: scale(1.1);
+    opacity: 0.75;
 }
 
 .container {

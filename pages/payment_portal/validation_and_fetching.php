@@ -4,7 +4,18 @@ require_once("../../php/dbconnection.php");
 session_start();
 
 // Check if all required session variables are set
-if(isset($_SESSION['user_id'], $_SESSION['seatnum'], $_SESSION['lugnum'], $_SESSION['lugnumadd'], $_SESSION['name'], $_SESSION['age'], $_SESSION['address'], $_SESSION['contact'], $_SESSION['passport'], $_SESSION['f_id'], $_SESSION['trip_class'], $_SESSION['price'])) {
+if (
+    isset(
+        $_SESSION['user_id'],
+        $_SESSION['seatnum'],
+        $_SESSION['lugnum'],
+        $_SESSION['lugnumadd'],
+
+        $_SESSION['f_id'],
+        $_SESSION['trip_class'],
+        $_SESSION['price']
+    )
+) {
     // Assign values to variables
     $user_id = $_SESSION['user_id'];
     $seat_num = $_SESSION['seatnum'];
@@ -44,6 +55,7 @@ if(isset($_SESSION['user_id'], $_SESSION['seatnum'], $_SESSION['lugnum'], $_SESS
 
             // Calculate total luggage
             $total_lug = $lug_num_add + $lug_num;
+            $total_pay = $total_lug + $price;
 
             // Insert reservation data into database
             $sql = "INSERT INTO `reservation`(`user_id`, `flight_id`, `name`, `address`, `contact`, `passport`, `class`, `seat_no`, `price`, `Luggage`)
@@ -51,7 +63,25 @@ if(isset($_SESSION['user_id'], $_SESSION['seatnum'], $_SESSION['lugnum'], $_SESS
             $result = mysqli_query($conn, $sql);
 
             if ($result) {
-                echo "Reservation successfully added.";
+                // Get the reference ID of the last inserted reservation
+                $reservation_id = mysqli_insert_id($conn);
+                $_SESSION['ref_id'] = $reservation_id;
+                // Insert seat booking data into database
+                $sql1 = "INSERT INTO `seats`( `flight_id`, `user_id`, `seat_number`, `is_booked`) 
+                    VALUES ('$flight_id','$user_id','$seat_num','1')";
+                $result1 = mysqli_query($conn, $sql1);
+
+                // Insert payment data into database
+                $sql2 = "INSERT INTO `payment`(`ref_id`, `payment_date`, `total_payment`) 
+             VALUES ('$reservation_id', '$current_date', '$total_pay')";
+                $result2 = mysqli_query($conn, $sql2);
+
+                if ($result1 && $result2) {
+                    header("Location:../E-ticket_portal/E-ticket_portal.php");
+                    exit(); // Add exit after redirection
+                } else {
+                    echo "Error: " . mysqli_error($conn);
+                }
             } else {
                 echo "Error: " . mysqli_error($conn);
             }
@@ -65,20 +95,4 @@ if(isset($_SESSION['user_id'], $_SESSION['seatnum'], $_SESSION['lugnum'], $_SESS
     echo "One or more required SESSION variables are not set.";
 }
 
-
-
-// Insert seat booking data into database
-$sql1 = "INSERT INTO `seats`( `flight_id`, `user_id`, `seat_number`, `is_booked`) 
-                    VALUES ('$flight_id','$user_id','$seat_num','1')";
-$result1 = mysqli_query($conn, $sql1);
-if ($result) {
-
-} else {
-    echo "Error: " . mysqli_error($conn);
-}
-
-if($result && $result1){
-    header("Location:../my_bookings/mybookings.php");
-}
 ?>
-

@@ -13,8 +13,9 @@ const bookingOptions = document.querySelectorAll('.booking');
 
 // Add event listener to each span
 bookingOptions.forEach(option => {
-    option.addEventListener('click', function() {
+    option.addEventListener('click', function () {
         // Get the value of the selected span
         document.getElementById('trip_class').value = option.textContent;
     });
 });
+

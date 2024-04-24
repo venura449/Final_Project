@@ -33,7 +33,7 @@ require_once ("../../php/dbconnection.php");
     </div>
     <div class="help">
         <img id="help" alt="contact us" src="../../src/cr%20(2).jpg">
-        <a href="#">need any help</a>
+        <a href="../need_any_help/need_any_help.php">need any help</a>
     </div>
     <div class="container2">
         <h2>Frequently Asked Questions</h2>

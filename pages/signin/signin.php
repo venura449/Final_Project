@@ -49,7 +49,7 @@ if (isset($_SESSION['login_error'])) {
     <div>
        <a href="../Home/index.php"> <img class="login__close" src="../../src/close.png"></a>
     </div>
-    <form action="handler/handler.php" class="login__form" method="post" onsubmit="return validInput()">
+    <form action="handler/handler.php" class="login__form"  id="loginform" method="post" onsubmit="return validInput()">
         <h2 class="login__title">Sign In</h2>
 
         <div class="login__group">
@@ -87,7 +87,7 @@ if (isset($_SESSION['login_error'])) {
 
             <a href="../../pages/forgetpass/Add_email_section/add_email.php" class="login__forgot"> forgot your password ? </a>
 
-            <button type="submit" class="login__button">Sign In</button>
+            <button type="submit" id="login-btn" class="login__button"><span id="login-text">Sign In</span></button>
 
         </div>
     </form>

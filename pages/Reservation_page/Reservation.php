@@ -133,10 +133,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </li>
                 <li>
                     <p>
-                        <b>Carry-On Baggage Allowance:</b> Most airlines allow passengers to bring one
-                        carry-on bag and one personal item, such as a purse or laptop bag, into
-                        the cabin. The maximum weight for carry-on luggage is usually around
-                        7 kg (15 lbs), but dimensions and weight restrictions may vary by airline.
+                    <b>Carry-On Baggage Allowance:</b> Most airlines allow passengers to bring one
+                    carry-on bag and one personal item, such as a purse or laptop bag, into
+                    the cabin. The maximum weight for carry-on luggage is usually around
+                    7 kg (15 lbs), but dimensions and weight restrictions may vary by airline.
                     </p>
                 </li>
                 <li>

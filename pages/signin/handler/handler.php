@@ -19,6 +19,7 @@ if ($conn->connect_error) {
         // Check if user exists
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
+            
             // Verify password
             if ($password == $row['password']) {
                 // Password is correct, set session and redirect

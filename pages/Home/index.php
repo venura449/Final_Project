@@ -79,7 +79,7 @@ require_once ("../../php/dbconnection.php");
             </div>
         </div>
         <input hidden="hidden" name="trip_class" id="trip_class"/>
-        <button class="btn" type="submit" name="submit"><i class="ri-search-line"></i></button>
+        <button class="btn"  type="submit" name="submit"><i class="ri-search-line"></i></button>
     </form>
     <?php
 
@@ -318,4 +318,14 @@ require_once ("../../php/dbconnection.php");
 </section>
 <script src="Home.js"></script>
 </body>
+<?php
+// Include the HTML content
+require_once("../../Components/Footer/Footer.php");
+
+// Include the CSS file
+echo '<style>';
+require_once("../../Components/Footer/Footer.css");
+echo '</style>';
+
+?>
 </html>
