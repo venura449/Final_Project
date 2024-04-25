@@ -37,13 +37,21 @@
 
 .help{
     font-size: 14px;
-    margin-left: 1200px;
+    margin-left: 1150px;
     margin-bottom: 15px;
     border:none;
     border-radius: 10px;
-    background-color:#c9daf5 ;
+    background-color:white ;
     padding:5px 6px;
-    width: 150px;
+    width:180px;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 0 5px var(--primary-color);
+    transition: 0.25s ease-in-out;
+}
+.help:hover{
+    transform: scale(1.1);
 }
 
 .container2{
@@ -73,8 +81,8 @@ h2{
 #help{
     border:none;
     box-shadow: none;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     margin-top: 3px;
 }
 .comm img {
@@ -108,10 +116,10 @@ h2{
     transform: scale(0.9%);
 }
 .help img{
-    display: inline;
+    display: inline-block;
 }
 .help a{
-    display: inline;
+    display: inline-block;
 }
 #mybtn1,#mybtn{
     background-color: transparent;

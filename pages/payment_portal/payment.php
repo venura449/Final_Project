@@ -1,14 +1,20 @@
 <?php
-// Include header and database connection files
-require_once("../../Components/Header/header.php");
+//requesting Database Connection
 require_once("../../php/dbconnection.php");
+
+// Include header Component
+require_once("../../Components/Header/header.php");
 
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
 
-// Check if the session variables for user information are set and not empty
+//if User is not signed in redirect to the sign in
+if (!isset($_SESSION['username'])) {
+    header("Location:../signin/signin.php");
+    exit();
+}
 
     // Store session variables in local variables
     $name = $_POST['pas_name'];
@@ -34,6 +40,7 @@ echo '</style>';
     $_SESSION['passport']=$passport_num;
 
 
+    //retrieve Flight data from database to display flight details
     $sql = "SELECT * FROM `flights` WHERE `flight_ID`= '$flight_id'";
     $result = mysqli_query($conn, $sql);
     $data_row = mysqli_fetch_assoc($result);
@@ -49,14 +56,18 @@ echo '</style>';
     <title>Payment</title>
 </head>
 <body>
+
+<!--this part contains the back and forward navigation bar-->
 <header>
-    <!-- Header content goes here -->
+
+    <!--Middle title div-->
     <div class="container">
         <div class="notification">
             Just One Step Ahead From Your Tour
         </div>
     </div>
 
+    <!-- this contains menu items-->
     <div class="container1">
         <div class="tabs">
             <input type="radio" id="radio-1" name="tabs">
@@ -68,11 +79,9 @@ echo '</style>';
             <span class="glider"></span>
         </div>
     </div>
-
 </header>
 
 <section class="content">
-    <!-- Payment content goes here -->
     <div class="details shadow">
         <div class="details__item">
             <div class="item__details">
@@ -95,14 +104,10 @@ echo '</style>';
                         <li><b>Arrival Time : </b><?php echo $data_row['arrival_time'] ?></li>
                         <li><b>Air-Line Name : </b><?php echo $data_row['airline'] ?></li>
                     </ul>
-
                 </div>
-
             </div>
         </div>
-
     </div>
-    <div class="discount"></div>
 
     <div class="container">
         <div class="payment">
@@ -110,9 +115,9 @@ echo '</style>';
                 Payment Method
             </div>
             <div class="payment__types">
-                <div class="payment__type">
-                    Visa</div>
                 <div class="payment__type active">
+                    Visa</div>
+                <div class="payment__type">
                     Master Card</div>
             </div>
 
@@ -200,9 +205,7 @@ echo '</style>';
 
         </div>
 </section>
-
 <script src="payment.js"></script>
-
 </body>
 </html>
 

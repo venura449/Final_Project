@@ -7,6 +7,11 @@ if (isset($_SESSION['inq_error'])) {
 } else {
     $inq_Fail = "";
 }
+
+if (!isset($_SESSION['username'])) {
+    header("Location:../signin/signin.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

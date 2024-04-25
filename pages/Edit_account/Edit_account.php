@@ -1,5 +1,8 @@
 <?php
-
+if (!isset($_SESSION['username'])) {
+    header("Location:../signin/signin.php");
+    exit();
+}
 // Include the HTML content
 require_once("../../Components/Header/header.php");
 
