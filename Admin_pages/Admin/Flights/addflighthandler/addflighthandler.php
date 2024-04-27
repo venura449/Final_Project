@@ -1,6 +1,6 @@
 <?php
 // including database Connection
-require_once("../../../../../php/dbconnection.php");
+require_once("../../../../php/dbconnection.php");
 session_start();
 
 if(isset($_POST['submit'])){

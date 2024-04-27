@@ -8,6 +8,7 @@ if (isset($_SESSION['login_error'])) {
 } else {
     $loginFail = "";
 }
+
 ?>
 
 <!DOCTYPE html>

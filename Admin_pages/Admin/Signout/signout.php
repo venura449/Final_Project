@@ -117,8 +117,8 @@ session_start();
             <h2>Confirm Sign-out?</h2>
             <p>After login out you will be redirected to login-page</p>
             <form>
-                <button type="submit">Yes,Sign-out</button>
-                <button type="submit">Cancel</button>
+                <button type="button" id="yes_btn">Yes,Sign-out</button>
+                <button type="button" id="no_btn">Cancel</button>
             </form>
             <div class="warning12">
                 <div class="icon12">

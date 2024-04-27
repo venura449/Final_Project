@@ -10,6 +10,19 @@
 }
 
 :root {
+    --primary-color: #3d5cb8;
+    --primary-color-dark: #334c99;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --extra-light: #f1f5f9;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --thirdcolor:#1e40af;
+    --textblue:#182d78;
+}
+
+
+:root {
     --blue: #2a2185;
     --white: #fff;
     --gray: #f5f5f5;
@@ -215,12 +228,12 @@ body {
 button {
     height: 50px;
     width: 150px;
-    background: linear-gradient(#4640e1, #2069be, #1574d2);
+    background-color: var(--blue);
     border-radius: 15px;
     border: none;
-    color: #fff;
+    font-weight: 400;
+    color: var(--white);
     font-family: var(--body-font);
-    font-weight: 300;
     margin:20px 12px;
 
 }

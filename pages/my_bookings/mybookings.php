@@ -34,7 +34,26 @@ $row = mysqli_fetch_assoc($result);
 <body>
 <header>
     <div class="container">
+        <div class="circle">
+            <?php
+            $imgqury = "SELECT * FROM `registered_user` WHERE username = '$username'";
+            $resultimg = mysqli_query($conn, $imgqury);
+            $rowimg = mysqli_fetch_assoc($resultimg);
+            if ($resultimg) {
+                // Check if any rows were returned
+                if ($rowimg['user_profile_img']!='') {
+                    echo '<img src="../../imagesprofile/' . $rowimg['user_profile_img'] . '" alt="profile">';
+                }
+                else {
+                    echo '<img alt="profile" src="../../src/users.webp"/>';
+                }
+            }
+            ?>
+        </div>
+
+
         <div class="notification">
+
             <?php
             if(isset($row['name']) && !empty($row['name'])) {
                 echo $row['name'];
@@ -46,6 +65,7 @@ $row = mysqli_fetch_assoc($result);
         <div>
             <p id="email"><?php echo $row['email']; ?></p>
         </div>
+
     </div>
 
     <div class="container1">
@@ -324,7 +344,8 @@ $row = mysqli_fetch_assoc($result);
 
                 <div>
                     <p>Seat No: <?php echo $rowin['seat_no']; ?></p>
-                    <h2>Rs <?php echo number_format($rowin['price'], 2); ?></h2>
+                    <?php $totalprice = $rowin['price']+$rowin['Luggage'];?>
+                    <h2>Rs <?php echo number_format($totalprice, 2); ?></h2>
                     <p><?php echo $rowin['passport']; ?></p>
                 </div>
             </div>

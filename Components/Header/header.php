@@ -40,9 +40,11 @@ session_start();
     </div>';
     } else {
     echo '<div class="tooltip">
+
         <a href="../../pages/signin/signin.php"><img id="nav_login_ico" src="../../src/login.png" alt="login"></a>
-        <span class="tool_tip_text">login</span>
-    </div>';
+        <span class="tool_tip_text">Login</span>
+    </div>
+    ';
     }
     ?>
 

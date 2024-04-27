@@ -8,11 +8,23 @@ if (isset($_SESSION['inq_error'])) {
     $inq_Fail = "";
 }
 
+//this code snippet describes the success inquiry message function
+if (isset($_SESSION['inq_success'])) {
+    if($_SESSION['inq_success']=== true){
+        echo'<script>
+              alert("Inquiry Sent Successfully");
+              </script>';
+    }
+    unset($_SESSION['inq_success']);
+}
+
+
 if (!isset($_SESSION['username'])) {
     header("Location:../signin/signin.php");
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +41,9 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 <div class="login" id="login">
+    <div>
+        <a href="../Home/index.php"> <img class="login__close" src="../../src/close.png"></a>
+    </div>
     <form action="need_any_help_handler.php" class="login__form" method="post" onsubmit="return validInput()">
         <h2 class="login__title">Need Any Help ?</h2>
         <div class="login__group">

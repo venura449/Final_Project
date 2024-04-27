@@ -10,6 +10,16 @@ echo '</style>';
 echo '<script>';
 require_once('../Components/sidebar.js');
 echo '</script>';
+
+
+//fetching error handling variable
+if(isset($_SESSION['pass_error'])){
+    $pass_error = $_SESSION['pass_error'];
+    unset($_SESSION['pass_error']);
+}
+else{
+    $pass_error="";
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,28 +38,32 @@ echo '</script>';
 <div class="container123">
 
     <div class="left">
+        <div id="alertmsg">
+
+        </div>
+
         <h2>Change Admin Password</h2>
-        <form>
+        <form action="passwordchange.php" method="post" onsubmit="return validInput()">
             <br>
             <label> Email</label><br>
             <label>
-                <input type="text"/>
+                <input type="text" name="email" id="email"/>
                 <br>
-
             </label>
 
             <label>Password</label><br>
             <label>
-                <input type="text"/>
+                <input type="text" name="password" id="password"/>
                 <br>
             </label>
 
             <label>Confirm Password</label><br>
             <label>
-                <input type="text">
+                <input type="text" name="confirmpassword" id="confirmpassword">
                 <br>
             </label>
-            <button>Add</button>
+
+            <button type="submit">Add</button>
         </form>
 
     </div>
@@ -87,5 +101,20 @@ echo '</script>';
         ?>
     </div>
 </div>
+<?php
+
+if(isset($_SESSION['passchanged'])){
+    if($_SESSION['passchanged']){
+        echo '
+<script>
+    alert("password Changed successfully");
+</script>';
+    }
+    unset($_SESSION['passchanged']);
+}
+
+?>
+?>
+<script src="password.js"></script>
 </body>
 </html>

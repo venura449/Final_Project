@@ -1,4 +1,5 @@
 <?php
+
 echo'<html>';
 require_once('../Components/Sidebar.php');
 echo '</html>';
@@ -10,6 +11,15 @@ echo '</style>';
 echo '<script>';
 require_once('../Components/sidebar.js');
 echo '</script>';
+
+//fetching error handling variable
+if(isset($_SESSION['admin_error'])){
+    $admin_error = $_SESSION['admin_error'];
+    unset($_SESSION['admin_error']);
+}
+else{
+    $admin_error="";
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,33 +39,52 @@ echo '</script>';
 
     <div class="left">
         <h2>Add New Admin</h2>
-        <form>
+        <form action="settingshandler.php" method="post" onsubmit="return validInput()" id="myform">
             <br>
+            <div id="alertmsg">
+
+            </div>
+
+            <!--this for Error message for displaying carrying error message-->
+            <script>
+                function checkcred() {
+                    var loginFail = "<?php echo $admin_error ?>";
+                    var alertmsg = document.getElementById("alertmsg");
+                    if (loginFail !== '') {
+                        alertmsg.style.display = 'block';
+                        alertmsg.innerHTML = loginFail;
+                    }
+                }
+                document.addEventListener('DOMContentLoaded', function() {
+                    checkcred();
+                });
+            </script>
+
             <label> Name</label><br>
             <label>
-                <input type="text"/>
+                <input type="text" name="name" id="name"/>
                 <br>
 
             </label>
 
             <label>Age</label><br>
             <label>
-                <input type="text"/>
+                <input type="text" name="age" id="age"/>
                 <br>
             </label>
 
             <label>Email</label><br>
             <label>
-                <input type="text">
+                <input type="text" name="email" id="email">
                 <br>
             </label>
 
             <label>Password</label><br>
             <label>
-                <input type="text">
+                <input type="text" name="password" id="password">
                 <br>
             </label>
-            <button>Add</button>
+            <button type="submit" id="submit_btn" >Add</button>
         </form>
 
     </div>
@@ -83,8 +112,7 @@ echo '</script>';
             echo '<tr>
                         <td>' . $row['name'] . '</td>
                         <td>' . $row['email'] . '</td>
-                        <td><span id="del"><button id="row_btn" onclick=deleteflight('.$row['admin_id'].')><ion-icon style="color:black" name="trash-outline"></button></ion-icon></span></td>
-                       
+                        <td><span id="del"><button id="row_btn" onclick="deleteAdmin(' . $row['admin_id'] . ')"><ion-icon style="color:black" name="trash-outline"></button></ion-icon></span></td>
                     </tr>';
 
         }
@@ -93,5 +121,6 @@ echo '</script>';
         ?>
     </div>
 </div>
+<script src="settings.js"></script>
 </body>
 </html>

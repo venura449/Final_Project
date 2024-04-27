@@ -51,6 +51,7 @@ if ($conn->connect_error) {
 
                 if($result_num_rows == 1){
                     if($result_for_row['password']==$password){
+                        $_SESSION['admin_id']=$result_for_row['admin_id'];
                         header("Location: ../../../Admin_pages/Admin/Admin.php");
                         exit();
                     }

@@ -1,11 +1,12 @@
 <?php
+echo '<style>';
+require_once("../../Components/Header/header.css");
+echo '</style>';
 // Include the HTML content
 require_once("../../Components/Header/header.php");
 
 // Include the CSS file
-echo '<style>';
-require_once("../../Components/Header/header.css");
-echo '</style>';
+require_once ("../../Components/Animation/animation.php");
 
 require_once ("../../php/dbconnection.php");
 
@@ -23,21 +24,22 @@ require_once ("../../php/dbconnection.php");
     />
     <link rel="stylesheet" href="Home.css" />
     <title>WIX-Air | Home</title>
+
 </head>
 <body>
 
-<header class="section__container header__container">
+<header data-aos="fade-left" class="section__container header__container">
     <h1 class="section__header">Find And Book<br />A Great Experience</h1>
     <img src="../../src/header.jpg" alt="header" />
 </header>
 
-<section class="section__container booking__container">
+<section data-aos="fade-right" class="section__container booking__container">
     <div class="booking__nav">
         <span class="booking">Economy Class</span>
         <span class="booking">Business Class</span>
         <span class="booking">First Class</span>
     </div>
-    <form method="post" >
+    <form method="post" id="form1">
         <div class="form__group">
             <span><i class="ri-map-pin-line"></i></span>
             <div class="input__content">
@@ -155,14 +157,14 @@ require_once ("../../php/dbconnection.php");
 
 
 <section class="section__container plan__container">
-    <p class="subheader">TRAVEL SUPPORT</p>
-    <h2 class="section__header">Plan your travel with confidence</h2>
-    <p class="description">
-        Find help with your bookings and travel plans, and seee what to expect
+    <p data-aos="fade-right" class="subheader">TRAVEL SUPPORT</p>
+    <h2 data-aos="fade-right" class="section__header">Plan your travel with confidence</h2>
+    <p data-aos="fade-right" class="description">
+        Find help with your bookings and travel plans, and see what to expect
         along your journey.
     </p>
-    <div class="plan__grid">
-        <div class="plan__content">
+    <div data-aos="fade-right" class="plan__grid">
+        <div data-aos="fade-right" class="plan__content">
             <span class="number">01</span>
             <h4>Travel Requirements for Dubai</h4>
             <p>
@@ -184,7 +186,7 @@ require_once ("../../php/dbconnection.php");
                 destinations.
             </p>
         </div>
-        <div class="plan__image">
+        <div data-aos="fade" class="plan__image">
             <img src="../../src/plan-1.jpg" alt="plan" />
             <img src="../../src/plan-2.jpg" alt="plan" />
             <img src="../../src/plan-3.jpg" alt="plan" />
@@ -192,7 +194,7 @@ require_once ("../../php/dbconnection.php");
     </div>
 </section>
 
-<section class="memories">
+<section data-aos="fade-right" class="memories">
     <div class="section__container memories__container">
         <div class="memories__header">
             <h2 class="section__header">
@@ -229,7 +231,7 @@ require_once ("../../php/dbconnection.php");
     </div>
 </section>
 
-<section class="section__container lounge__container">
+<section data-aos="fade-right" class="section__container lounge__container">
     <div class="lounge__image">
         <img src="../../src/lounge-1.jpg" alt="lounge" />
         <img src="../../src/lounge-2.jpg" alt="lounge" />
@@ -269,7 +271,7 @@ require_once ("../../php/dbconnection.php");
     </div>
 </section>
 
-<section class="section__container travellers__container">
+<section data-aos="fade-right" class="section__container travellers__container">
     <h2 class="section__header">Best travellers of the month</h2>
     <div class="travellers__grid">
         <div class="travellers__card">
@@ -307,7 +309,7 @@ require_once ("../../php/dbconnection.php");
     </div>
 </section>
 
-<section class="subscribe">
+<section data-aos="fade-right" class="subscribe">
     <div class="section__container subscribe__container">
         <h2 class="section__header">Subscribe newsletter & get latest news</h2>
         <form class="subscribe__form">
@@ -317,6 +319,7 @@ require_once ("../../php/dbconnection.php");
     </div>
 </section>
 <script src="Home.js"></script>
+
 </body>
 <?php
 // Include the HTML content

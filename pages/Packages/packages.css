@@ -18,6 +18,7 @@ b{
     scroll-behavior: smooth;
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0,0%,0%,0.5);
     border-radius: 0.5rem;
+    transition: 5s ease-in-out;
 }
 .slider img{
     flex: 1 0 100%;

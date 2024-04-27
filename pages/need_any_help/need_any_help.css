@@ -322,3 +322,22 @@ img {
     text-align: center;
 }
 
+.login__close {
+    width: max-content;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    font-size: 2rem;
+}
+.login__close {
+    position: relative;
+    top: -3rem;
+    right: 2rem;
+    font-size: 1.5rem;
+    color: var(--title-color);
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+}
+

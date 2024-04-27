@@ -84,7 +84,9 @@ body{
 #Flighttable  tr td{
     text-align: center;
 }
-
+.left{
+    position: relative;
+}
 
 .right h2{
     text-align: center;
@@ -101,7 +103,7 @@ body{
     border-radius: 0.938rem;
     border: none;
     color:var(--white);
-    margin-top: 1rem;
+    margin-top: 30px;
     font-family: var(--body-font);
     font-weight: 300;
     transition: 0.5s ease-in-out;
@@ -123,7 +125,6 @@ body{
     outline:none;
 }
 #del{
-    background-color: var();
     padding:8px;
     border-radius: 10px;
     margin-right:20px;
@@ -138,4 +139,14 @@ body{
 }
 #del ion-icon:hover{
     color:black;
+}
+
+#alertmsg{
+    z-index: 1;
+    position: absolute;
+    top:78%;
+    left:0;
+    text-align: center;
+    width:100%;
+    color: red;
 }
