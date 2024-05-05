@@ -2,6 +2,7 @@
 /*header*/
 require_once("../../Components/Header/header.php");
 require_once("../../php/dbconnection.php");
+require_once ("../../Components/Animation/animation.php");
 
 // Include the CSS file
 echo '<style>';
@@ -38,7 +39,7 @@ $_SESSION['price']=$data_row['price'];
 </head>
 
 <body>
-<section>
+<section data-aos="fade-right">
 
     <div class="container1">
         <div class="tabs">
@@ -59,7 +60,7 @@ $_SESSION['price']=$data_row['price'];
     </div>
 </section>
 
-<section>
+<section data-aos="fade-right">
     <div class="details shadow">
         <div class="details__item">
             <div class="item__details">
@@ -88,7 +89,7 @@ $_SESSION['price']=$data_row['price'];
         </div>
 </section>
 
-<section class="section_2">
+<section data-aos="fade-right" class="section_2">
     <div class="details shadow1">
         <div class="details__item">
             <div class="item__details1">
@@ -103,7 +104,7 @@ $_SESSION['price']=$data_row['price'];
             </div>
 </section>
 
-<section>
+<section data-aos="fade-right">
     <div class="details2 shadow">
         <div class="details__item">
             <form class="item__details1" method="post" action="../payment_portal/payment.php">
@@ -115,13 +116,13 @@ $_SESSION['price']=$data_row['price'];
                 </div>
                 <div class="item__description2">
                     <label> Name
-                        <input type="text"  class="num" name="pas_name" />
+                        <input type="text" id="name" class="num" name="pas_name" />
                     </label>
                     <label> Age
-                        <input type="text" class="num" name="pas_age" />
+                        <input type="text" id="age" class="num" name="pas_age" />
                     </label>
                     <label> Address
-                        <input type="text" class="num" name="pas_add" />
+                        <input  type="text" id="add" class="num" name="pas_add" ></input>
                     </label>
                     <label> Contact Number
                         <input type="text" class="num" name="pas_con" />

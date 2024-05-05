@@ -2,7 +2,7 @@
 
 // Include the HTML content
 require_once("../../Components/Header/header.php");
-
+require_once ("../../Components/Animation/animation.php");
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
@@ -19,7 +19,7 @@ echo '</style>';
 
 </head>
 <body>
-<section class="container">
+<section   data-aos="fade-right" class="container">
     <h1>Check Out Our New Travel Locations</h1>
     <div class="sliderwrapper">
         <div class="slider">
@@ -43,7 +43,7 @@ echo '</style>';
     </div>
 
 </section>
-<section class="secondsection">
+<section  data-aos="fade-right"  class="secondsection">
     <div>
         <h2>What is the Package Section ?</h2>
         <p>
@@ -59,7 +59,7 @@ echo '</style>';
     </div>
 </section>
 
-<section>
+<section  data-aos="fade-right">
     <div class="container">
         <h1>Latest Offer Packages</h1>
         <div class="card__container">
@@ -95,7 +95,7 @@ echo '</style>';
         </div>
     </div>
 </section>
-<section class="third">
+<section  data-aos="fade-right" class="third">
 
 </section>
 <script src="package.js"></script>

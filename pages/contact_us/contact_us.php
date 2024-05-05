@@ -1,7 +1,7 @@
 <?php
 // Include the HTML content
 require_once("../../Components/Header/header.php");
-
+require_once ("../../Components/Animation/animation.php");
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
@@ -19,7 +19,7 @@ require_once ("../../php/dbconnection.php");
         <link rel="stylesheet" href="contact_us.css">
     </head>
     <body>
-    <div class="container123">
+    <div data-aos="float-right" class="container123">
         <div class="box1">
             <img alt="help image" src="../../src/cr%20(1).jpg">
         </div>
@@ -31,42 +31,46 @@ require_once ("../../php/dbconnection.php");
             <p><b>Facebook &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</b>wix@facebook.com</p>
         </div>
     </div>
-    <div class="help">
+    <a href="../need_any_help/need_any_help.php">
+    <div data-aos="fade-right" class="help">
         <img id="help" alt="contact us" src="../../src/helpdesk.gif">
-        <a href="../need_any_help/need_any_help.php">Need any help</a>
+        Need any help
     </div>
-    <div class="container2">
-        <h2>Frequently Asked Questions</h2>
-        
-        <!-- this for displaying questions-->
-        <?php
-        $sql = "SELECT * FROM `inquire` ORDER BY `likes` DESC ";
-        $result = mysqli_query($conn, $sql);
+    </a>
+   <section id="faq">
+       <div id="FAQ" data-aos="fade-right" class="container2">
+           <h2>Frequently Asked Questions</h2>
+
+           <!-- this for displaying questions-->
+           <?php
+           $sql = "SELECT * FROM `inquire` ORDER BY `likes` DESC ";
+           $result = mysqli_query($conn, $sql);
 
 
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="container4">';
-            echo '<p>' . $row['question'] . '</p>';
-            echo '<div class="comm">';
-            echo '<span>' . '&nbsp;' . '</span>';
-            echo '<form action="update_likes.php" method="post" style="display: inline;">';
-            echo '<input type="hidden" name="question_id" value="' . $row['inq_id'] . '">';
-            echo '<button id="mybtn" type="submit" name="like" value="1"><img src="../../src/like.png"></button>' . $row['likes'];
-            echo '</form>';
-            echo '<form action="updatedislikes.php" method="post" style="display: inline;">';
-            echo '<input type="hidden" name="question_id" value="' . $row['inq_id'] . '">';
-            echo '<button id="mybtn1" type="submit" name="dislike" value="1"><img src="../../src/dislike.png"></button>' . $row['dislikes'];
-            echo '</form>';
-            echo '</div>';
-            echo '</div>';
-        }
-        ?>
+           while ($row = mysqli_fetch_assoc($result)) {
+               echo '<div class="container4">';
+               echo '<p>' . $row['question'] . '</p>';
+               echo '<div class="comm">';
+               echo '<span>' . '&nbsp;' . '</span>';
+               echo '<form action="update_likes.php" method="post" style="display: inline;">';
+               echo '<input type="hidden" name="question_id" value="' . $row['inq_id'] . '">';
+               echo '<button id="mybtn" type="submit" name="like" value="1"><img src="../../src/like.png"></button>' . $row['likes'];
+               echo '</form>';
+               echo '<form action="updatedislikes.php" method="post" style="display: inline;">';
+               echo '<input type="hidden" name="question_id" value="' . $row['inq_id'] . '">';
+               echo '<button id="mybtn1" type="submit" name="dislike" value="1"><img src="../../src/dislike.png"></button>' . $row['dislikes'];
+               echo '</form>';
+               echo '</div>';
+               echo '</div>';
+           }
+           ?>
 
-        <script>
+           <script>
 
-        </script>
-        
-    </div>
+           </script>
+
+       </div>
+   </section>
     </body>
     </html>
 

@@ -86,9 +86,11 @@ if (!isset($_SESSION['username'])) {
         <div class="details__item">
             <div class="item__details">
                 <div class="item__title">
-                    <?php echo $data_row['departure'] ?> to
-                    <?php echo $data_row['arrival'] ?> -
-                    <?php echo $data_row['flight_ID']?>
+                    <?php echo $data_row['departure'];
+                    $_SESSION['departure'] = $data_row['departure'];?> to
+                    <?php echo $data_row['arrival'];
+                    $_SESSION['arrival'] = $data_row['arrival'];?> -
+                    <?php echo $data_row['flight_ID']; ?>
                 </div>
                 <div class="item__price">
                     Rs <?php echo $data_row['price'] ?> /=

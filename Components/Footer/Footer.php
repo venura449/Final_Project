@@ -31,18 +31,16 @@
         <!--Middle Section-->
         <div class="footer__col">
             <h4>INFORMATION</h4>
-            <p>Home</p>
-            <p>About</p>
-            <p>Packages</p>
-            <p>Reservation</p>
-            <p>Destinations</p>
+            <p><a href="#">Home</a></p>
+            <p><a href="../../pages/About_us/About_us.php">About</a></p>
+            <p><a href="../../pages/Packages/packages.php">Packages</a></p>
+            <p><a href="#search">Reservation</a></p>
+            <p><a href="../../pages/need_any_help/need_any_help.php">Need any help</a></p>
         </div>
         <!--right side section-->
         <div class="footer__col">
-            <h4>CONTACT</h4>
-            <p>Support</p>
-            <p>Feedback</p>
-            <p>FAQ</p>
+            <h4><a href="../../pages/contact_us/contact_us.php">CONTACT</a></h4>
+            <p><a href="../../pages/contact_us/contact_us.php#faq">FAQ</a></p>
         </div>
     </div>
     <!--Icons Section-->

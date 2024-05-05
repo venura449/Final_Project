@@ -42,7 +42,7 @@ $username = $_SESSION['username'];
                     <input type="text" id="passnum" name="passnum">
 
                     <label for="bio">Bio</label>
-                    <input type="text" id="bio" name="bio">../../imagesprofile/' . $rowimg['user_profile_img'] . '
+                    <input type="text" id="bio" name="bio">
                 </div>
                 <div class="box2">
                     <div class="circle">
@@ -55,7 +55,7 @@ $username = $_SESSION['username'];
                                 // Fetch the row containing the image data
                                 $rowimg = mysqli_fetch_assoc($resultimg);
                                 // Output the image with the correct src attribute
-                                echo '<img src="" alt="profile">';
+                                echo '<img src="../../imagesprofile/' . $rowimg['user_profile_img'] . '"?> alt="profile">';
                             } else {
                                 // No image found for this user, display backup image
                                 echo '<img src="../../src/users.webp" alt="profile">';

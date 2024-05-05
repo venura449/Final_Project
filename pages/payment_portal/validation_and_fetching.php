@@ -10,10 +10,14 @@ if (
         $_SESSION['seatnum'],
         $_SESSION['lugnum'],
         $_SESSION['lugnumadd'],
-
         $_SESSION['f_id'],
         $_SESSION['trip_class'],
-        $_SESSION['price']
+        $_SESSION['price'],
+        $_POST['card_num'],
+        $_POST['expiry_month'],
+        $_POST['expiry_year'],
+        $_POST['cvv_code'],
+        $_POST['name_on_card']
     )
 ) {
     // Assign values to variables
@@ -43,17 +47,9 @@ if (
     $data = mysqli_fetch_assoc($result);
 
     if (mysqli_num_rows($result) == 1) {
-        // Get the current date with only month and year included
-        $current_date = date('Y-m'); // Year-Month format
-
-        // Construct the expiry date with only month and year included
-        $exp_date = $expiry_year . '-' . $expiry_month; // Year-Month format
-
         // Validate expiry date and CVV
-        if ($exp_date > $current_date && $cvv_code == $data['CVV']) {
-            echo "Card validated";
-
-            // Calculate total luggage
+        if ($expiry_year > date('Y') || ($expiry_year == date('Y') && $expiry_month >= date('m')) && $cvv_code == $data['CVV']) {
+            // Calculate total luggage and payment
             $total_lug = $lug_num_add + $lug_num;
             $total_pay = $total_lug + $price;
 
@@ -65,7 +61,7 @@ if (
             if ($result) {
                 // Get the reference ID of the last inserted reservation
                 $reservation_id = mysqli_insert_id($conn);
-                $_SESSION['ref_id'] = $reservation_id;
+                $_SESSION['ref_id']=$reservation_id ;
                 // Insert seat booking data into database
                 $sql1 = "INSERT INTO `seats`( `flight_id`, `user_id`, `seat_number`, `is_booked`) 
                     VALUES ('$flight_id','$user_id','$seat_num','1')";
@@ -73,12 +69,12 @@ if (
 
                 // Insert payment data into database
                 $sql2 = "INSERT INTO `payment`(`ref_id`, `payment_date`, `total_payment`) 
-             VALUES ('$reservation_id', '$current_date', '$total_pay')";
+             VALUES ('$reservation_id', NOW(), '$total_pay')";
                 $result2 = mysqli_query($conn, $sql2);
 
                 if ($result1 && $result2) {
                     header("Location:../E-ticket_portal/E-ticket_portal.php");
-                    exit(); // Add exit after redirection
+                    exit(); // Exit script after email is sent
                 } else {
                     echo "Error: " . mysqli_error($conn);
                 }
@@ -94,5 +90,4 @@ if (
 } else {
     echo "One or more required SESSION variables are not set.";
 }
-
 ?>

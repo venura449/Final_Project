@@ -23,8 +23,8 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,13 +150,13 @@ $row = mysqli_fetch_assoc($result);
                     <div>
                         <h5>Gender</h5>
                         <p>
-                        <?php
-                        if(isset($row['gender']) && !empty($row['gender'])) {
-                            echo $row['gender'];
-                        } else {
-                            echo "Not provided";
-                        }
-                        ?>
+                            <?php
+                            if(isset($row['gender']) && !empty($row['gender'])) {
+                                echo $row['gender'];
+                            } else {
+                                echo "Not provided";
+                            }
+                            ?>
                         </p>
                     </div>
 
@@ -303,62 +303,62 @@ $row = mysqli_fetch_assoc($result);
     </div>
 </section>
 <?php
-                $sql = "SELECT ru.*, r.*, f.*
+$sql = "SELECT ru.*, r.*, f.*
                         FROM registered_user AS ru
                         INNER JOIN reservation AS r ON ru.User_ID = r.user_id
                         INNER JOIN flights AS f ON r.flight_id = f.flight_ID
                         WHERE ru.username = '$username';
 ";
-                        $result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
 
 
 ?>
 
 <section class="content1 active">
-<div class="container">
-<h1>Your Recent Flight Bookings</h1>
+    <div class="container">
+        <h1>Your Recent Flight Bookings</h1>
 
 
-    <?php
-    // Loop through each flight booking data fetched from the database
-    if (mysqli_num_rows($result) > 0) {
-        while ($rowin = mysqli_fetch_assoc($result)) {
-            ?>
-            <div class="sinticket">
-                <div>
+        <?php
+        // Loop through each flight booking data fetched from the database
+        if (mysqli_num_rows($result) > 0) {
+            while ($rowin = mysqli_fetch_assoc($result)) {
+                ?>
+                <div class="sinticket">
                     <div>
-                        <h4><?php echo $rowin['departure_time'] . ' - ' . $rowin['arrival_time']; ?></h4>
-                        <p><?php echo $rowin['departure'] . ' - ' . $rowin['arrival']; ?></p>
-                        <p><?php echo $rowin['airline']; ?></p>
+                        <div>
+                            <h4><?php echo $rowin['departure_time'] . ' - ' . $rowin['arrival_time']; ?></h4>
+                            <p><?php echo $rowin['departure'] . ' - ' . $rowin['arrival']; ?></p>
+                            <p><?php echo $rowin['airline']; ?></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <p>Flight Duration : <b><?php echo $rowin['duration']; ?> hours</b></p>
+                            <p> Ticket Class : <b><?php echo $rowin['class']; ?></b></p>
+                            <p> Reference Number : <b><?php echo $rowin['ref_id']; ?></b></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p>Seat No: <?php echo $rowin['seat_no']; ?></p>
+                        <?php $totalprice = $rowin['price']+$rowin['Luggage'];?>
+                        <h2>Rs <?php echo number_format($totalprice, 2); ?></h2>
+                        <p><?php echo $rowin['passport']; ?></p>
                     </div>
                 </div>
-
-                <div>
-                    <div>
-                        <p>Flight Duration : <b><?php echo $rowin['duration']; ?> hours</b></p>
-                        <p> Ticket Class : <b><?php echo $rowin['class']; ?></b></p>
-                        <p> Reference Number : <b><?php echo $rowin['ref_id']; ?></b></p>
-                    </div>
-                </div>
-
-                <div>
-                    <p>Seat No: <?php echo $rowin['seat_no']; ?></p>
-                    <?php $totalprice = $rowin['price']+$rowin['Luggage'];?>
-                    <h2>Rs <?php echo number_format($totalprice, 2); ?></h2>
-                    <p><?php echo $rowin['passport']; ?></p>
-                </div>
-            </div>
-            <?php
+                <?php
+            }
+        } else {
+            // If no tickets are found, display a message
+            echo "<p>No Ticket booked by you.</p>";
         }
-    } else {
-        // If no tickets are found, display a message
-        echo "<p>No Ticket booked by you.</p>";
-    }
-    ?>
+        ?>
 
 
-</div>
+    </div>
 </section>
 <section class="cont1 active">
     <div class="container ">
@@ -387,7 +387,7 @@ $row = mysqli_fetch_assoc($result);
             <h3>Connected Accounts</h3>
             <div class="card1">
                 <div class="cont">
-                   <img class="googicon" src="../../src/google.png" alt="google">
+                    <img class="googicon" src="../../src/google.png" alt="google">
                 </div>
                 <div class="cont2">
                     <p>
@@ -414,11 +414,11 @@ $row = mysqli_fetch_assoc($result);
     </div>
 </section>
 <?php
-    $sql = "SELECT f.*
+$sql = "SELECT f.*
     FROM `feedback` AS f
     INNER JOIN `registered_user` AS ru ON f.user_id = ru.User_ID
     WHERE ru.username = '$username'";
-    $result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
 ?>
 <section class="content2 active">
@@ -432,6 +432,17 @@ $row = mysqli_fetch_assoc($result);
                     ?>
                     <p><?php echo $rowfe['question']; ?></p>
                     <?php
+                    // Check if there is a reply
+                    if (!empty($rowfe['reply'])) {
+                        ?>
+                        <span id="reply"><?php  echo "Reply : ".$rowfe['reply']; ?></span>
+                        <?php
+                    } else {
+                        // Display a message when there is no reply
+                        ?>
+                        <span id="reply">No reply for this message</span>
+                        <?php
+                    }
                 }
                 ?>
             </div>
@@ -455,9 +466,9 @@ $row = mysqli_fetch_assoc($result);
                 ?>
             </div>
             <h5>Thank You For Your Suggestions We Are Looking Forward For Your Next Journey With Us</h5>
-            </div>
-
         </div>
+
+    </div>
 </section>
 <script src="mybookings.js"></script>
 </body>

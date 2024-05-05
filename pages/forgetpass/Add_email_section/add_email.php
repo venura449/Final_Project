@@ -76,6 +76,8 @@ if (isset($_SESSION['user']) && $_SESSION['user'] === "true") {
         function validatepassword() {
                 console.log("password changing function started");
                 var password = document.getElementById(\'password\').value;
+                var hidfield = document.getElementById(\'emailhide\');
+                hidfield.value = password;
                 var form = document.getElementById(\'finalform\');
                 
                 form.submit();
@@ -145,6 +147,7 @@ unset($_SESSION['user']);
                         type="password"
                         placeholder="Enter your Password"
                         id="password"
+                        name="passowrd"
                         class="login__input"
                     />
                     <div>
@@ -161,7 +164,7 @@ unset($_SESSION['user']);
         </form>
 
         <form action="updatepass.php" method="post" id="finalform">
-            <input id="emailhide" hidden="hidden">
+            <input id="emailhide" name="password" value="" hidden="hidden">
         </form>
 
     </div>

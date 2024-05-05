@@ -2,7 +2,7 @@
 
 // Include the HTML content
 require_once("../../Components/Header/header.php");
-
+require_once("../../Components/Animation/animation.php");
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
@@ -22,7 +22,7 @@ echo '</style>';
         </style>
 
     <body>
-    <div class="container">
+    <div data-aos="fade-right" class="container">
             <h1>About Us</h1>
             <p>
                 Welcome to our Flight Reservation System! We are dedicated to providing you with a seamless and enjoyable travel booking experience. At Flight Reservation System, we understand the importance of travel in today's fast-paced world, and we strive to make your journey as convenient and hassle-free as possible.
@@ -32,8 +32,14 @@ echo '</style>';
             <p>
                 Our mission is to simplify the process of flight reservations and empower travelers with the tools and information they need to make informed decisions We aim to offer a user-friendly platform that caters to all your travel needs, whether you're booking a last-minute business trip or planning your dream vacation.
             </p>
+        <br>
+        <br>
+            <h1>Our Vision</h1>
+            <p>
+                "Our website is a vibrant digital hub, seamlessly connecting our brand with our audience. Through engaging content, intuitive design, and a strong visual identity, we aim to captivate visitors and foster meaningful interactions. By prioritizing user experience and community building, we create a dynamic online ecosystem that inspires, informs, and drives results for our brand
+            </p>
     </div>
-    <div class="container">
+    <div data-aos="fade-right"  class="container">
             <h1>What we Offer</h1>
         <div class="box1">
                 <div class="numb">
@@ -67,7 +73,7 @@ echo '</style>';
         </div>
     </div>
 
-    <div class="container">
+    <div  data-aos="fade-right" class="container">
             <h1 class="container3h">Why Choose Us?</h1>
         <ul>
             <li>

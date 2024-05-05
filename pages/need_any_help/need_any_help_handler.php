@@ -24,7 +24,8 @@ if ($conn->connect_error) {
 
            if($email == $user_id_row['email']){
                // Insert data into the inquire table
-               $insert_query = "INSERT INTO `feedback` (`user_id`, `question`) VALUES ('$user_id','$message')";
+               $currentDate = date("Y-m-d");
+               $insert_query = "INSERT INTO `feedback` (`user_id`, `question`,`post_date`) VALUES ('$user_id','$message','$currentDate')";
                $insert_result = mysqli_query($conn, $insert_query);
 
                if ($insert_result) {

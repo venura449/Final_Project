@@ -4,12 +4,9 @@ require_once("../../Components/Header/header.css");
 echo '</style>';
 // Include the HTML content
 require_once("../../Components/Header/header.php");
-
 // Include the CSS file
 require_once ("../../Components/Animation/animation.php");
-
 require_once ("../../php/dbconnection.php");
-
 
 ?>
 
@@ -30,16 +27,16 @@ require_once ("../../php/dbconnection.php");
 
 <header data-aos="fade-left" class="section__container header__container">
     <h1 class="section__header">Find And Book<br />A Great Experience</h1>
-    <img src="../../src/header.jpg" alt="header" />
+    <img src="../../src/flight.jpg" alt="header" />
 </header>
 
-<section data-aos="fade-right" class="section__container booking__container">
+<section id="search" data-aos="fade-right" class="section__container booking__container">
     <div class="booking__nav">
         <span class="booking">Economy Class</span>
         <span class="booking">Business Class</span>
         <span class="booking">First Class</span>
     </div>
-    <form method="post" id="form1">
+    <form action="#search" method="post" id="form1">
         <div class="form__group">
             <span><i class="ri-map-pin-line"></i></span>
             <div class="input__content">
@@ -312,9 +309,9 @@ require_once ("../../php/dbconnection.php");
 <section data-aos="fade-right" class="subscribe">
     <div class="section__container subscribe__container">
         <h2 class="section__header">Subscribe newsletter & get latest news</h2>
-        <form class="subscribe__form">
-            <input type="text" placeholder="Enter your email here" />
-            <button class="btn">Subscribe</button>
+        <form class="subscribe__form" action="subshandler.php" method="post">
+            <input type="text" name="mail" placeholder="Enter your email here" />
+            <button class="btn" type="submit">Subscribe</button>
         </form>
     </div>
 </section>

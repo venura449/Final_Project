@@ -1,13 +1,16 @@
 <?php
+
+
 // Include the HTML content
 require_once("../../Components/Header/header.php");
+
+require_once("../../php/dbconnection.php");
+
 
 // Include the CSS file
 echo '<style>';
 require_once("../../Components/Header/header.css");
 echo '</style>';
-
-require_once ("../../php/dbconnection.php");
 
 // Fetch the reference ID from session
 $ref_id = $_SESSION['ref_id'];
@@ -19,7 +22,7 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
-<html lang="en"'>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +73,55 @@ $row = mysqli_fetch_assoc($result);
                     <li><span>Price :</span> Rs <?php echo $row['price']; ?> </li>
                     <li><span>Total price for luggage :</span> Rs <?php echo $row['Luggage']; ?> </li>
                     <li><span>Total payment :</span> Rs <?php echo $total ?> </li>
+                    <?php
 
+                    // Prepare email message
+                    $message = "<h1>Reservation Confirmation</h1><br><p>Your reservation on Wix air flights are successfully Added</p><br><ul><li>Name : " . $_SESSION['name'] . "</li><li>Seat No : " . $row['seat_no'] . "</li><li>Class : " . $row['class'] . "</li><li>Departure : " . $_SESSION['departure'] . "</li><li>Arrival : " . $_SESSION['arrival'] . "</li><li>Reference No : " . $row['ref_id'] . "</li><li>Reference No : " . $_SESSION['trip_class'] . "</li></ul>";
+
+
+                    // Send email using SMTP.js
+                    echo '
+<script>
+    /* SmtpJS.com - v3.0.0 */
+    var Email = {
+        send: function (a) {
+            return new Promise(function (n, e) {
+                a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send";
+                var t = JSON.stringify(a);
+                Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) {
+                    n(e)
+                })
+            })
+        }, ajaxPost: function (e, n, t) {
+            var a = Email.createCORSRequest("POST", e);
+            a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () {
+                var e = a.responseText;
+                null != t && t(e)
+            }, a.send(n)
+        }, ajax: function (e, n) {
+            var t = Email.createCORSRequest("GET", e);
+            t.onload = function () {
+                var e = t.responseText;
+                null != n && n(e)
+            }, t.send()
+        }, createCORSRequest: function (e, n) {
+            var t = new XMLHttpRequest;
+            return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t
+        }
+    };
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "venurajayasingha1@gmail.com",
+        Password: "51D17D3B04EFC623A7948287E33946A30029",
+        To: "' . $_SESSION['email'] . '",
+        From: "venurajayasingha1@gmail.com",
+        Subject: "Reservation Confirmation",
+        Body: "' . $message . '"
+    }).then(function(message) {
+        console.log("Email sent successfully!");
+    });
+</script>';
+                    ?>
                 </ul>
             </div>
             <div class="imagewrapper">

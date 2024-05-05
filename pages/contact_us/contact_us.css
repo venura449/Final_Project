@@ -22,14 +22,14 @@
     width: 300px;
     border-radius: 25px;
     border: none;
-    box-shadow: 0 0 5px  #519ab8;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
 }
 
 .container1{
     border-radius: 40px;
     background-color:#d7f7ff;
     border: none;
-    box-shadow: 0 0 5px  #519ab8;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
     padding:60px 40px;
     width: 450px;
     margin-left :400px;
@@ -47,7 +47,7 @@
     display:flex;
     align-items: center;
     justify-content: space-evenly;
-    box-shadow: 0 0 5px var(--primary-color);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
     transition: 0.25s ease-in-out;
 }
 .help:hover{
@@ -56,7 +56,7 @@
 
 .container2{
     justify-content: center;
-    border: 2px solid #154c8a;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
     border-radius: 25px;
     background-color: #fff;
     padding:30px 40px;

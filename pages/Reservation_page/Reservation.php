@@ -5,6 +5,7 @@
 require_once ("../../php/dbconnection.php");
 // Include the HTML content
 require_once("../../Components/Header/header.php");
+require_once ("../../Components/Animation/animation.php");
 
 // Include the CSS file
 echo '<style>';
@@ -34,7 +35,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         <link rel="stylesheet" href="Reservation.css">
     </head>
     <body>
-    <div class="container">
+    <div data-aos="fade-right" class="container">
         <h1>Reserve Your Seat</h1>
         <h3>Click on the selected Seat or Manually Enter the seat Number</h3>
         <p>In this seating arrangement:</p>
@@ -46,11 +47,11 @@ while ($row = mysqli_fetch_assoc($result)) {
             <li>The numbering starts from the corner and expands inward.</li>
         </ul>
         </p>
-        <p>For instance, in row 1, the leftmost seat would be labeled "L1", the rightmost seat "R67",
+        <p>For instance, in row 1, the leftmost seat would be labeled "L23", the rightmost seat "R1",
             and proceeding inwards from both sides.
         </p>
     </div>
-    <div class="container">
+    <div data-aos="fade-right" class="container">
 
             <h1>Seat Booking</h1>
             <p>*Seats Highlighted in yellow color are already booked</p>
@@ -61,29 +62,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         </div>
         </div>
 
-    <div class="box1">
 
-        <form action="reservation_data_patch.php" method="post">
-            <h2>Enter Your Sheet Manually</h2>
-            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
-            <input type="text" class="seatnum" id="seatnum" name="seatnum" placeholder="Enter Customer 01 Seat Number">
-            <br>
-            <h2>Enter Your luggage Fees </h2>
-            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
-            <input required type="text" class="seatnum" id="lugnum" name="lugnum" placeholder="Enter Customer 01 luggage">
-            <br>
-            <h2>Enter Your  Additional luggage Fees</h2>
-            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
-            <input  required  type="text" class="seatnum" id="lugnumadd" name="lugnumadd" placeholder="Enter Customer 01 Additional luggage">
-            <br>
-            <p id="warn">Luggage Fees Are Automatically Calculated When You Clicked The Relevant Package.If You Have Different
-                Luggage You Can <a href="../contact_us/contact_us.php">Contact Us</a></p>
 
-            <button class="submitbtn">Submit</button>
-        </form>
-    </div>
-
-    <div class="container1">
+    <div data-aos="fade-right" class="container1">
         <h1>Select Your Luggage Type</h1>
         <div class="box2">
 
@@ -99,7 +80,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     <input type="radio" id="yes_or_no" class="group1" name="yes_or_no" value="0">
                 </div>
             </div>
-            <div class="container2">
+            <div  data-aos="fade-right" class="container2">
                 <div class="box4">
                     <div class="b1">
                         <img src="../../src/bag1.jpg" id="bag1">
@@ -122,7 +103,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </form>
             </div>
         </div>
-        <div class="restrictions">
+        <div data-aos="fade-right" class="restrictions">
             <ul>
                 <li>
                     <p>
@@ -151,7 +132,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         </div>
     </div>
 
-    <div class="container1">
+    <div data-aos="fade-right" class="container1">
         <h1>Additional Luggage Options</h1>
         <div class="box2">
 
@@ -193,7 +174,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             </div>
 
         </div>
-        <div class="restrictions">
+        <div data-aos="fade-right" class="restrictions">
             <ul>
                 <li>
                     <p>
@@ -214,6 +195,30 @@ while ($row = mysqli_fetch_assoc($result)) {
             </ul>
         </div>
     </div>
+
+    <div  data-aos="fade-right" class="box1">
+
+        <form action="reservation_data_patch.php" method="post">
+            <h2>Enter Your Sheet Manually</h2>
+            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
+            <input type="text" class="seatnum" id="seatnum" name="seatnum" placeholder="Enter Customer 01 Seat Number">
+            <br>
+            <h2>Enter Your luggage Fees </h2>
+            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
+            <input required type="text" class="seatnum" id="lugnum" name="lugnum" placeholder="Enter Customer 01 luggage">
+            <br>
+            <h2>Enter Your  Additional luggage Fees</h2>
+            <label>&nbsp;&nbsp;&nbsp;Customer 01 </label><br>
+            <input  required  type="text" class="seatnum" id="lugnumadd" name="lugnumadd" placeholder="Enter Customer 01 Additional luggage">
+            <br>
+            <p id="warn">Luggage Fees Are Automatically Calculated When You Clicked The Relevant Package.If You Have Different
+                Luggage You Can <a href="../contact_us/contact_us.php">Contact Us</a></p>
+
+            <button class="submitbtn">Submit</button>
+        </form>
+    </div>
+    <br>
+    <br>
 
 
 

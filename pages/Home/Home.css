@@ -414,8 +414,8 @@ body {
 }
 
 .subscribe__container {
-    max-width: 500px;
-    text-align: center;
+    max-width: 500px !important;
+    text-align: center!important;
 }
 
 .subscribe__form {

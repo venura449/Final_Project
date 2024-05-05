@@ -32,6 +32,7 @@ if ($conn->connect_error) {
                 // Password is correct, set session and redirect
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['user_id'] = $row['User_ID'];
+                $_SESSION['email'] = $row['email'];
                 $_SESSION['logged_in'] = true;
                 header("Location:$url");
                 exit();

@@ -6,7 +6,7 @@ CREATE TABLE Registered_user
 (
     User_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
     Time_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    username VARCHAR(6) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     name VARCHAR(30) NOT NULL,
     email VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE Registered_user
 
 
 CREATE TABLE flights (
-                         flight_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
+    flight_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
                          arrival VARCHAR(50) NOT NULL,
                          arrival_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
                          departure VARCHAR(40) NOT NULL,
@@ -76,8 +76,7 @@ CREATE TABLE feedback (
                           email VARCHAR(30),
                           question VARCHAR(500) NOT NULL,
                           post_date DATE NOT NULL,
-                          reply VARCHAR(500),
-                          CONSTRAINT FK_feedback_user_id FOREIGN KEY (user_id) REFERENCES Registered_user(User_ID) ON DELETE CASCADE
+                          reply VARCHAR(500)
 );
 
 CREATE TABLE inquire (
@@ -193,9 +192,9 @@ VALUES
 
 INSERT INTO admin (added_admin_id, name, age, email, password)
 VALUES
-    (0, 'Admin1', '35', 'admin1@example.com', 'adminpass1'),
-    (1, 'Admin2', '40', 'admin2@example.com', 'adminpass2'),
-    (1, 'Admin3', '30', 'admin3@example.com', 'adminpass3');
+    (0, 'Admin1', '35', 'admin1@wixair.com', 'adminpass1'),
+    (1, 'Admin2', '40', 'admin2@wixair.com', 'adminpass2'),
+    (1, 'Admin3', '30', 'admin3@wixair.com', 'adminpass3');
 
 
 INSERT INTO customer_service (added_date, email, password)

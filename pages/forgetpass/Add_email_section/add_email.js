@@ -13,9 +13,7 @@ function validate() {
     }
 }
 
-function otpdiv() {
-    console.log("hello");
-}
+
 function backToLogin() {
     window.location.href = "../loginpage/login.php";
 }

@@ -96,7 +96,6 @@
 }
 .details__item {
     display: flex;
-    border: 2px solid var(--primary-color);
     border-radius: 10px;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
 }
@@ -126,7 +125,7 @@
 .item__quantity {
     position: absolute;
     right: 475px;
-    top: 310px;
+    top: 29px;
     font-size: 20px;
 }
 .item__details {
@@ -147,9 +146,6 @@
 }
 .item__description ul{
     list-style: none;
-}
-.item__description1{
-
 }
 .item__description1 input {
     margin: 12px 30px 12px 30px;
@@ -241,10 +237,16 @@
 .headtitle{
     margin-top:30px;
 }
-.seat{
-
-}
 .seatimage{
     height:30px;
     width:30px;
+}
+#name{
+    width:500px;
+}
+#age{
+    width:100px;
+}
+#add{
+    width:400px;
 }

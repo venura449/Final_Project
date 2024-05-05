@@ -308,3 +308,14 @@ header {
     object-fit: cover;
     border-radius: 50%;
 }
+.help:hover{
+    transform: scale(1.1);
+}
+
+#reply{
+    border-radius: 10px;
+    background: var(--primary-color);
+    margin: 44px;
+    padding: 5px;
+    color:white;
+}

@@ -30,7 +30,6 @@ body{
 }
 
 .container{
-    border: 2px solid var(--primary-color-dark);
     border-radius: 25px;
     background-color: var(--white);
     padding:60px 80px;
@@ -72,4 +71,7 @@ h1{
     color:var(--white) !important;
     border-radius: 12px;
 
+}
+.container p{
+    text-align: justify;
 }
